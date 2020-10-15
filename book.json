@@ -1,5 +1,16 @@
 {
   "plugins":[
-    "expandable-chapters"
-  ]
+    "expandable-chapters",
+    "github",
+    "splitter",
+    "pageview-count",
+    "auto-scroll-table",
+    "popup"
+  ],
+  "pluginsConfig": {
+
+    "github": {
+      "url": "https://github.com/hgdzw/dzwGitBook"
+    }
+  }
 }
