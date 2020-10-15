@@ -13,7 +13,8 @@
 * [数据库](java/数据库remark.md)
   * [mysql](java/mysql.md)
 ---
-* [中间件](java/rocketmq.md)
+* [中间件](java/消息队列.md)
+  * [rocketmq](java/rocketmq.md)
 ---
 * [闲谈记录]()
   * [心路历程](杂/记录.md)
