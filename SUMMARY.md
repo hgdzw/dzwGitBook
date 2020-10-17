@@ -16,6 +16,9 @@
 * [中间件](java/消息队列.md)
   * [rocketmq](java/rocketmq.md)
 ---
+* [缓存](java/缓存.md)
+  * [redis](java/rocketmq.md)
+---
 * [闲谈记录]()
   * [心路历程](杂/记录.md)
 ---
