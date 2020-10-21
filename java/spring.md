@@ -92,6 +92,7 @@ public void refresh() throws BeansException, IllegalStateException {
 ```
 
 ## spring生命周期
+   ![image](image/spring对象的生命周期.png)
   首先会设置beanFactory 将所有的bean 放在这个里面, 容器说到底就是一个map  name -> bean  然后设置类加载器 看bean是否实现了一些类 然后执行这些方法 然后将类进行初始化 
   
 Q: 首先的疑问是 bean 实现了 一些接口 在调用这些接口的时候 这些bean的属性有没有被加在的  属性是在什么时候加载的?
@@ -100,18 +101,17 @@ Q: 首先的疑问是 bean 实现了 一些接口 在调用这些接口的时候
 
 
 ### AOP 面向切面编程: 使用动态代理对方法进行增强
-   当对一系列(有特征的)方法进行统一处理 
-
-
-
-
+   当对一系列(有特征的)方法进行统一处理,spring 的aop 是基于动态代理的 如果是对有接口的 是使用JDK Proxy进行代理的
+   如果是没有实现接口的 那么就无法使用JDK Proxy进行代理了 这个时候就使用 cglib生成一个被代理的子类进行代理
 
 
 # spring mvc 
 ![image](image/spring%20mvc%20运行流程.png)
-
-spring mvc 
- 请求到达 dispatchServlet 
+   spring mvc 
+   1.请求到达 dispatchServlet, 调用HandlerMapper 解析对应的handler 
+   2.解析到了handler 也就是常说的controller 控制器 然后交给 handlerAdepter适配器处理
+   3.handleradepter 会根据 handler 调用(.handler方法)对应的处理器来处理请求 返回一个mv(modelandview)
+   
 
 
 
