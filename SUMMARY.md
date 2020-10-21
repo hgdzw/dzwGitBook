@@ -8,7 +8,9 @@
   - [3.多线程](java/多线程.md)
   - [4.锁](java/锁的记录.md)
   - [5.spring](java/spring.md)
-  - [6.分布式](java/spring%20cloud.md)
+--- 
+* [分布式](java/spring%20cloud.md)
+  * [mysql](java/nacos.md)
 --- 
 * [数据库](java/数据库remark.md)
   * [mysql](java/mysql.md)
