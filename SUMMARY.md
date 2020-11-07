@@ -7,13 +7,13 @@
   - [2.io](java/io.md)
   - [3.多线程](java/多线程.md)
   - [4.锁](java/锁的记录.md)
-  - [5.spring](java/spring.md)
+  - [5.spring](java/框架/spring.md)
 --- 
 * [分布式](java/spring%20cloud.md)
   * [mysql](java/nacos.md)
 --- 
 * [数据库](java/数据库remark.md)
-  * [mysql](java/mysql.md)
+  * [mysql](java/数据库/mysql.md)
 ---
 * [中间件](java/消息队列.md)
   * [rocketmq](java/rocketmq.md)
