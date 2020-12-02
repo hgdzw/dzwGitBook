@@ -21,9 +21,10 @@
 #### Q:
 
 #### Q:mybatis 的延迟加载?
-   延迟加载一般又叫按需加载，在需要的时候在加载，一般是用在关联查询中的 在mybatis 中的resultMap中的 associate(一对一) 和collection(一对多) 这两个映射关系  
-   一般是<association property="主model中要映射的" column="查询列名" select="副mapper中的方法 com...selectById"></association>  
    什么是延迟加载,是不需要的数据不一次查出来 先查出来一部分 然后在需要的时候自动去查询 
+   延迟加载一般又叫按需加载，在需要的时候在加载，一般是用在关联查询中的 在mybatis 中的resultMap中的 associate(一对一) 和collection(一对多) 这两个映射关系  
+   一般是< association property="主model中要映射的" column="查询列名" select="副mapper中的方法 com...selectById">< /association>    
+   它的原理是：使用CGLIB创建目标对象的代理对象，当调用目标方法时，进入拦截器方法，比如调用a.getB().getName()，拦截器invoke()方法发现a.getB()是null值，那么就会单独发送事先保存好的查询关联B对象的sql，把B查询上来，然后调用a.setB(b)，于是a的对象b属性就有值了，接着完成a.getB().getName()方法的调用。这就是延迟加载的基本原理。
 
 #### Q:mybatis的缓存？
    缓存就是--第一次过来查询 先去缓存里面 如果缓存里面有的话 就用缓存里面的  如果缓存里面没有的话就去数据库查询 查询出来之后 放进缓存中.

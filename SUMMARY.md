@@ -16,10 +16,10 @@
   * [mysql](java/数据库/mysql.md)
 ---
 * [中间件](java/消息队列.md)
-  * [rocketmq](java/rocketmq.md)
+  * [rocketmq](java/消息队列/rocketmq.md)
 ---
 * [缓存](java/缓存.md)
-  * [redis](java/rocketmq.md)
+  * [redis](java/消息队列/rocketmq.md)
 ---
 * [闲谈记录]()
   * [心路历程](杂/记录.md)
