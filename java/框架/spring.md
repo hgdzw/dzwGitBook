@@ -11,16 +11,35 @@
   ![image](../image/spring之加载bean的方法.png)
 
 
-## spring生命周期
+### 二、spring生命周期
    ![image](../image/spring对象的生命周期.png)
-  首先会设置beanFactory 将所有的bean 放在这个里面, 容器说到底就是一个map  name -> bean  然后设置类加载器 看bean是否实现了一些类 然后执行这些方法 然后将类进行初始化 
+  首先会设置beanFactory 将所有的bean 放在这个里面, 容器说到底就是一个map  name -> bean  然后设置类加载器 看bean是否实现了一些类 然后执行这些方法 然后将类进行初始化  
+  #### 2.1首先看懂spring的生命周期有什么用? 
+  从上面的生命周期我们可以很清楚的看清,我们所注入到的bean是在什么时候加载的,如果我们要对加载的bean在他加载之前进行操作 应该怎么做？
   
 Q: 首先的疑问是 bean 实现了 一些接口 在调用这些接口的时候 这些bean的属性有没有被加在的  属性是在什么时候加载的?
 
 总结: 使用spring 的时候 用到的就是啥都不用管 都交给spring 来管理(spring 的初始化 bean 容器的管理) 
 
 
-### AOP 面向切面编程: 使用动态代理对方法进行增强
+### 三、IOC
+   #### 3.1 重要的类
+   * Resource: 都是解决配置文件从哪里读取 以及如何读取。
+   * BeanDefinition: 这个接口以及其他实现的接口, 可以理解为一个bean的定义 bean名字类型和一些引用,在ioc中如何定义这个bean以及产生实例,ioc容器初始化的时候就是把这个放进了map中
+   * beanFactory: 在已经获取bean定义的情况下,如何装配和获取bean实例
+   * ApplicationContext: 是继承beanFactory 的 但是它担任的是一个工厂的职责 对上面的进行聚合处理
+   
+   #### 3.2 流程
+   1. 首先就是spring的启动看是什么方式启动的 一般是AbstractApplicationContext中的refresh 方法,然后就是加载所有要放进ioc 的类 将他们放进DefaultListableBeanFactory 的beanDefinitionMap中,
+   2. 这个时候已经加载和注册完毕了 看那个接口实现了BeanFactoryPostProcessor 执行方法
+   3. registerBeanPostProcessors()看那个map中有哪些类继承了 BeanPostProcess 将他们放入 beanPostProcessors 列表中
+   4. 创建bean的实例 然后看有没有前置方法执行 然后 initializeBeanBean() 这里应该是aop注入的时机  然后执行后置方法
+   
+
+
+### 四、AOP 面向切面编程: 使用动态代理对方法进行增强
+   * aop是在什么时候实现的？ 
+   * aop有没有默认的代理 cglib还是jdk动态代理
    当对一系列(有特征的)方法进行统一处理,spring 的aop 是基于动态代理的 如果是对有接口的 是使用JDK Proxy进行代理的
    如果是没有实现接口的 那么就无法使用JDK Proxy进行代理了 这个时候就使用 cglib生成一个被代理的子类进行代理
 
@@ -54,7 +73,7 @@ public class A{
              // 具体的子类可以在这步的时候添加一些特殊的 BeanFactoryPostProcessor 的实现类或做点什么事
              postProcessBeanFactory(beanFactory);
              // 调用 BeanFactoryPostProcessor 各个实现类的 postProcessBeanFactory(factory) 回调方法
-             invokeBeanFactoryPostProcessors(beanFactory);          
+             invokeBeanFactoryPostProcessors(beanFactory);         
     
     
     
@@ -113,7 +132,15 @@ public class A{
 ```
 #### Q: beanFactory 和 factoryBean 的区别？
    首先明白beanFactory 是一个接口 在上面的源码中 他是ioc容器的一个工厂 getBean() 的方法都注册到这个上面的  
-   factoryBean 也是一个接口 主要是让我们可以自定义bean 的创建过程 只要实现这个借口，可以自定义bean的创建过程
+   factoryBean 也是一个接口 主要是让我们可以自定义bean 的创建过程(你可以new一个其他的类然后返回),只要实现这个借口，可以自定义bean的创建过程
+
+#### Q: BeanFactoryPostProcessor 和 BeanPostProcessor 的区别？
+   BeanFactoryPostProcessor 是先于 BeanPostProcessor 的,BeanFactoryPostProcessor 是在所有bean 加载注册之后进行的 这个时候就可以对这些bean进行修改  
+   BeanPostProcessor 是spring 的后置处理器 两个方法 是在实例化之前和实例化之后执行的,可以配置多个 是一个执行链 一个的返回值作为另一个的入参  
+
+#### Q: Aware 类
+   aware 方法是在类没有实例化的时候 去看那些类有实现这些的
+
 
 ### 关于问题的总结
  #### Q: spring 中 A(没有事务)调用 B(有事务) 同类中 B 的事务生效吗 如果不生效 为什么？
