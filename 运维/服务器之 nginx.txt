@@ -1,0 +1,140 @@
+﻿nginx 作为一个主流的http server服务器 关心的是http协议层面的传输和访问控制，客户端通过http server访问服务器上
+  存储的资源
+  一般用作反向代理：负责静态资源的发送 动态请求转发以及结果的回复
+  集群：
+	一个server 里面可以配置多个ip(服务器) 自动负载均衡 用来做集群
+nginx 可以理解为前端服务器 
+  
+  nginx + lua 语言  实现web服务器  能实现非常高的并发   ---openResty 就是以此实现的
+  
+安装目录下的html 文件里面的文件可以直接访问
+ 
+
+ 
+windwos 上安装nginx  直接免安装版的nginx 解压 之后配置nginx.conf  
+
+	一般为了好看 都是在主 nginx.conf 中  include 自己定义文件夹名称/*.conf;
+
+	然后在自己定义的里面写：
+	这里是采用的负载均衡 高可用的  里面可以写多个server
+	upstream name{
+		server	127.0.0.1:9001;
+	}
+	server {
+        listen       80;					配置访问的端口
+        server_name  localhost;				监听的域名
+		//可以配置多个 location(查找规则)
+        location / {						设置一个连接
+            root   html;					访问的路径  请求到了 到html 路径里面去找
+            index  index.html index.htm;	欢迎界面
+			#proxy_pass   http://xxx;		转发到哪个地址 或者ip
+			proxy_pass   http://name;		可以配置upstream的名字 就是到上面找 然后负载均衡
+        }
+		
+		//如果想让下载的话
+		location /
+		{
+			if ($request_filename ~* ^.*?\.(txt|doc|pdf|rar|gz|zip|docx|exe|xlsx|ppt|pptx)$){
+			add_header Content-Disposition: 'attachment;';
+		}
+		}
+				
+		
+		
+		
+	解读配置
+		- upstream：定义一个负载均衡集群，例如leyou-manage
+		  - server：集群中某个节点的ip和port信息，可以配置多个，实现负载均衡，默认轮询
+		- server：定义一个监听服务配置
+		  - listen：监听的端口
+		  - server_name：监听的域名
+		  - location：匹配当前域名下的哪个路径。例如：/，代表的是一切路径
+			- proxy_pass：监听并匹配成功后，反向代理的目的地，可以指向某个ip和port，或者指向upstream定义的负载均衡集群，nginx反向代理时会轮询中服务列表中选择。
+
+	流程： 根据监听的域名和端口 找到 server 轮询到哪个server 然后匹配路径 相同 找负载均衡集群的ip 
+		
+		
+	nginx可以通过命令行来启动，操作命令：
+		- 启动：start nginx.exe
+		- 停止：nginx.exe -s stop
+		- 重新加载：nginx.exe -s reload
+
+
+		
+		
+		
+
+		
+linux 上面安装nginx 
+
+yum 安装  ：在Centos下，yum源不提供nginx的安装，可以通过切换yum源的方法获取安装。也可以通过直接下载安装包的方法，**以下命令均需root权限执行**：
+			yum update
+			yum localinstall http://nginx.org/packages/centos/7/noarch/RPMS/nginx-nr-agent-2.0.0-12.el7.ngx.noarch.rpm
+			yum -y install nginx
+			service nginx start
+				这样是安装在/etc/nginx  配置文件在这下面的 Nginx.conf
+				但是在nginx.conf 里面service上方有一个 include /etc/nginx/conf.d/*.conf;   从这里也读取配置 这里面 写server配置
+				
+				运行的时候 在 /etc/nginx.conf 里面读取  读取到include /etc/nginx/conf.d/*.conf; 下面 运行server 
+					
+					server {
+        					listen       80;         //默认的web访问端口
+        					server_name  xxxxxx;     //服务器名	网址
+        					#charset koi8-r;
+        					access_log  /home/wyz/flask/logs/access.log;    //服务器接收的请求日志，logs目录若不存在需要创建，否则nginx报错
+        					error_log  /home/wyz/flask/logs/error.log;         //错误日志
+
+        					location / {
+
+            						include        uwsgi_params;     //这里是导入的uwsgi配置
+
+            						uwsgi_pass     127.0.0.1:5051;   //需要和uwsgi的配置文件里socket项的地址
+                                        	     //相同,否则无法让uwsgi接收到请求。
+
+            						uwsgi_param UWSGI_CHDIR  /home/wyz/flask;     //项目根目录
+
+            						uwsgi_param UWSGI_SCRIPT manage:app;     //启动项目的主程序(在本地上运行
+                                    	                 //这个主程序可以在flask内置的
+                                         	            //服务器上访问你的项目)
+								}
+
+						}
+		重启和关闭
+			先执行
+				nginx -c /etc/nginx/nginx.conf
+			然后关闭或者重启
+				nginx -s stop/reload
+				
+				如果出现nginx: [error] open() "/run/nginx.pid" failed (2: No such file or directory)
+				nginx -c /etc/nginx/nginx.conf
+			新安装的重启
+				cd /usr/local/nginx/sbin/
+				./nginx -s reload
+				./nginx -s stop
+				
+总结：
+		只要找到能运行 nginx 的运行文件  现在是在  /usr/local/nginx/sbin/nginx   然后这个  可以带选项
+			cd /usr/local/nginx/sbin/      ./nginx -后面可以跟参数
+			
+		配置nginx.conf 
+			server  就是一个服务   准确说就是一个端口
+				{
+					listen 			这个是监听的端口
+					server_name			外部访问的网址   这两个确定 ip 和端口 
+					
+					location  /  {				理解为拦截资源  现在是拦截 / 所有
+					
+						root  应该是访问主目录  
+						index  首先访问主目录下面的默认页面
+					
+					}
+				
+				
+				
+				}
+				
+		
+	
+LVS  可以和nginx 做负载均衡	
+		
+				

@@ -1,0 +1,19 @@
+多线程用到一个 threding	 是一个类 其中最基本的是run方法	
+\	队列里面要用到的Queue
+	
+
+例如创建了一个类 
+class mythred（threding.thred）:
+	重写mythred方法 传参数过来
+	def _init_(self,id,...)
+		threding.Thred._init_(self，)
+	
+		self.id = id
+		..
+	def run(self):
+	
+		
+
+thred = mythred(1,)
+thred.run()
+thred.start() 	运行

@@ -1,0 +1,91 @@
+python 正则中re 模块有两种方式
+
+ pattern = re.compile(r"\d")
+
+m = pattern.match()	从起始位置开始查找 返回第一个符合规则的对象
+pattern.search() 从任何位置向后查找 返回第一个符合规则的对象
+pattern.finditer() 所有的全部匹配 返回的是一个迭代器
+pattern.findall() 所有的全部匹配 返回列表
+pattern.split() 分割字符串 返回列表
+pattern.sub(“abc”,str)  替换
+
+m.group()  查看匹配到的 
+
+match（str,起始位置，结束位置）
+search(str,begin,end)
+ 
+规则
+pattern = re.compile(r" 规则")
+pattern.findall(文本)
+
+
+
+re.I  表示忽略大小写
+re.S  表示全文匹配
+
+
+lxml  中的xpath 方法 
+		值得一提的是 这里面有一个模糊查询  contains（@id,'可以是id对应的不完整的值'）
+	例子	
+		('//div[@class="pagecenter p3"]//strong')		/text()  获取内容
+														/@vlaue  获取《》里的值 例如  /@href
+
+
+
+beautifulSoup  处理网页文件的 比正则好用多了
+
+ 
+	创建一个beautifulsoup对象
+		soup= beautifulsoup（html，lxml，编码方式默认一样）
+		#打开本地文件的方式来创建对象
+		#soup = beautifulsoup（open(’index.html‘)）
+		
+		#格式化输出soup对象的内容
+		print soup.prettify
+
+	查找
+		1 tag（标签）
+		print soup.title标签/head头/a/p
+		输出 类似  #<title> neirong </title>	好像只返回一个
+			
+			name 和 attrs 二级属性	
+			print soup.title.name
+			#输出的是标签本身的名称
+			
+			print soup.title.attrs
+			#输出的是title的所有属性得到的是一个字典
+			print soup.title.get["属性的名称"]
+			这样得到的就是某一属性的内容
+			
+			print soup.a.string 
+			#string  是显示里面的内容
+		
+	1. find_all 查找	
+		返回的是bs4.element.ResultSet 类型 不能转化为str
+		1.传字符串	
+		soup.find_all(简单的字符串参数)
+		2.传正则表达式
+		3.传参数
+	
+
+	2.select 查找		
+	soup.select()返回的是  list
+	1.标签名查找
+		soup.select("title")
+
+	2.类名查找class
+		加点
+		soup.select(".sister")
+	3.id查找
+		加#
+		soup.select("#link")
+	4.组合查找
+		例如查找p标签id等于link内容
+		soup.select("p #link")
+	5.属性查找
+		查找时加入属性元素
+		soup.select("a[class="sisect"]")
+  select查找返回的都是列表形式 遍历输出 然后用get_text()获取内容
+	
+	
+	找到了之后 用.get('href')   方法可以拿出里面的值
