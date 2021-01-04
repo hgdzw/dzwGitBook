@@ -1,0 +1,57 @@
+是一个应用服务器  也可以用来发布网站	tomcat 默认的编解码是 ISO-8859-1
+是一个web容器   包括三个组件容器（servlet，filter，listener）
+		tomcat 会为程序的所有servlet创建一个容器 来统一管理servlet 有servlet就有容器
+			tomcat停止的时候容器销毁
+启动过程： 当启动一个Tomcat容器的时候，首先会去读取web.xml配置文件里面的配置(首先读取<context-param>和<listener> 这两个节点，)
+			这一步骤没有出错，项目才能正常被启动。
+	加载过程是 ：  <context-param>   ->    <listener>    ->   <filter>   ->   <servlet>
+	
+	
+tomcat 找所有的文件都是从out  输出的文件里面找的  不是放在电脑里面就是从文件路径下面找的
+
+目录
+	
+	bin：脚本目录
+		启动脚本：startup.bat
+		停止脚本：shutdown.bat
+	conf：配置文件目录 (config /configuration)
+		核心配置文件：server.xml
+		用户权限配置文件：tomcat-users.xml
+		所有web项目默认配置文件：web.xml				可以配置默认访问的页面
+	lib：依赖库，tomcat和web项目中需要使用的jar包
+	logs：日志文件.
+		localhost_access_log..txt tomcat记录用户访问信息，..表示时间。
+		例如：localhost_access_log.2017-04-28.txt		
+	temp：临时文件目录，文件夹内内容可以任意删除。
+	webapps：默认情况下发布WEB项目所存放的目录。
+	work：tomcat处理JSP的工作目录。
+	
+	
+webapps目录 下面放
+windwos idea 集成tomcat
+	目录：
+		src ： 放置java代码
+		web： 放置静态资源    相当于/
+			
+			WEB-INF：不可访问
+				lib：  自己创建 放包
+				web.xml  配置文件
+				
+servlet :理解为小程序 运行在tomcat 上面  每访问一次servlet  service 方法就会执行一次
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

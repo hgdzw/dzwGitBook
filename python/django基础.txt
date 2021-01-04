@@ -1,0 +1,823 @@
+django 1.10.1
+pycharm
+	前端   http/css/jq
+	后端 python或者其他
+
+
+
+所以要在要引用static中的文件中 加{% name “文件路径”   %}
+
+django 项目至少包含一个以上的应用
+novel  增加的app/应用
+webapp   项目
+manage.py 管理文件
+开发流程：
+	1.创建虚拟环境
+	2.安装django
+	3.创建项目
+	4.创建应用
+	5.在models.py中定义模型
+	6.定义视图
+	7.配置url
+	8.创建模板
+
+
+
+
+
+
+
+
+MVC（解耦） 的  功能：低耦合 高内聚 高可扩展性
+		m（model）  表示数据库层的封装
+		v（view）   用于向用户展示结果
+		c（controller）  核心 处理请求 获取数据 返回结果
+基于MVC的MVT框架
+		M(model) 负责与数据库的交互
+		V（view） 核心 处理请求获取数据 返回结果
+		T（template）  负责呈现内容发到浏览器
+
+
+首先安装虚拟环境
+		首先 电脑上面有python
+
+	安装 virtualenv虚拟环境
+		pip install virtualenv
+	使用虚拟环境创建目录
+		virtualenv venv
+	这是一个单独的虚拟环境  然后 用
+		venv\Scripts\activate
+		进入 命令前面带《vnev》	的 虚拟环境
+
+		如果是linux 则用
+		source venv/bin/activate
+		进入 命令前面带《vnev》	的 虚拟环境
+		deactivate  退出虚拟环境
+
+
+	pip install django  在虚拟环境里面安装 django
+
+django-admin startproject name			创建项目
+tree . 			查看结构
+
+Django目录说明
+
+	manage.py：一个命令行工具，可以使你用多种方式对Django项目进行交互（应该是和数据库进行交互）
+
+		内层的目录：项目的真正的Python包
+
+		_init _.py：一个空文件，它告诉Python这个目录应该被看做一个Python包
+		settings.py：项目的配置
+		urls.py：项目的URL声明
+		wsgi.py：项目与WSGI兼容的Web服务器入口
+
+在manage.py 那一层创建app
+	python manage.py startapp app_name        或者 		django-admin.py startapp app_name
+
+	app_name
+		__init__.py
+		migrations       用于数据迁移
+			__init__.py
+		admin.py 		 django自动生成的后台管理页面，无须在此作修改
+		apps.py 		 当前app的配置文件
+		models.py 		 数据模型，和其他语言的一样
+		views.py 		 定义前台显示的界面	引入前台网页文件
+		tests.py 		 用于做测试的
+		urls.py			 在settings中urls 的include（）引入 这个  然后通过这个路由显示前台页面
+	templates		  模板文件夹	需要在setting中TEMPLATES 设置 DIRS :[os.path.join(BASE_DIR,'templates')]
+		app_name
+			index.html	前台显示网页文件
+
+
+		发送一个http请求 到settings中url中找 然后跳转到app url中找 有路由对应的页面 然后显示
+
+如果是手动创建的 注意在setting中app中加入  不然后来调用的时候调用不到模板文件
+
+
+
+创建的app中有两个文件夹 其中一个是
+templates   存放模板文件的文件夹    （将前端文件开发的问价能放进去）
+然后在视图函数中  用render调用就可以了
+
+三个参数render(request,模板中的主页文件名)
+
+在django中是不能直接访问静态文件的  必须通过app中的static文件夹中才能访问
+
+生成数据表
+		激活模型 在settings中 将booktest应用加入到installed_apps中
+
+		生成迁移文件：根据模型类生成sql语句
+		python manage.py makemigrations
+	执行迁移：执行sql语句生成数据表
+		python manage.py migrate
+
+进入终端环境测试	python manage.py shell
+		实例化对象对数据库进行增删改查
+			from apptest import *
+			from datetime import *
+			#添加数据
+				b = Bookinfo
+				b.btitle  ='abc'
+				b.save()   提交
+
+				b.delete()	删除
+
+			Bookinfo.objects.all() 查看
+			b = Heroinfo.objects.get(pk=1)
+			b.heroinfo_set()		取出heroinfo这个对应的所有制
+
+项目开始：					项目运行命令 python manage.py runserver 8080
+参考 https://blog.csdn.net/fly910905/article/details/77905581
+	在settings.py中DATABASES中设置数据库的路径和配置
+
+
+模型		查询    类.成员.查询方法(属性名称_ _比较运算符=值)   例如 BookInfo.creat.filter（btitle__contains='传'）  查询btitle这个字段区分大小写的带传的值
+	定义模型
+		在app 里面的models.py 里面写模型
+		类似于
+			from django.db import models
+
+			class Book(models.Model):
+				#成员
+				title = models.CharField(max_length=100)	CharField 定义好的字段  max_length 值的长短
+					属性有一个choines    他是一个可迭代的列表或者元祖 第一个是值 第二个是描述
+					例如 title_choices=（
+						(0,'下架'),
+						(1,'上架'),
+					）
+						title = models.SmallTtegerField(default=0,choices=title_choices,verbose_name=''商品状态)
+				verbose_name  好像是对这个字段的标识吧
+
+
+				class Meta（）：	模板里面有元选项 Meta
+					db.table='info'		#这是数据库中保存的名字
+					verbose_name = '商品表'
+					verbose_name_plural = verbose_name		#后台显示名字的时候显示成这样
+
+		管理器
+		作用：更改查询级，增加创建对象的方法
+			是模型类的属性 用于将对象与数据表映射
+			还有好多方法 称之为 过滤器										查询方法
+																				get拿一个
+																				filter拿多个
+
+				all（）
+				filter（）
+				order_by()
+				values()	一个对象构成一个字典 然后构成一个列表返回
+			返回单个值的方法
+				get()：返回单个满足条件的对象
+					如果未找到会引发"模型类.DoesNotExist"异常
+					如果多条被返回，会引发"模型类.MultipleObjectsReturned"异常
+				count()：返回当前查询的总条数
+				first()：返回第一个对象
+				last()：返回最后一个对象
+				exists()：判断查询集中是否有数据，如果有则返回True
+
+			缓存的问题 		拿到的数据会缓存 下次再拿就从缓存里面拿数据
+
+			objects管理器 是manage类的对象 用于和数据库的交互
+
+			当每次需要去赋值的时候麻烦 在类里面写init方法 但是不能写 所以自己写一个方法
+			@classmethd
+			def name(cls,btitle。。。)
+				b= BookInfo()
+				b.btitle=btitle
+				...
+				return b
+		自定义管理器	还可以在管理器里面写 然后通过管理器调用
+			class BookManager(models.Manager):
+				def create_book(self, title):
+					book = self.create(title=title)
+					# do something with the book
+					return book
+
+			class Book(models.Model):
+				title = models.CharField(max_length=100)
+
+				objects = BookManager()
+
+			book = Book.objects.create_book("Pride and Prejudice")
+
+			#可以根据model文件生成sql语句去创建表
+
+		查询的问题
+
+			限制查询集
+
+			查询集的缓存
+
+			字段查询
+
+			聚合函数	使用aggregate()函数返回聚合函数的值	函数：Avg，Count，Max，Min，Sum
+
+			F对象	字段A与字段B进行比较	例	list.filter(bread__gte=F('bcommet'))
+
+			Q对象	需要进行or查询，使用Q()对象		Q对象可以使用&（and）、|（or）操作符组合起来
+					例  list.filter(Q(pk_ _lt=6) | Q(bcommet_ _gt=10))
+
+
+			外键的问题 另一张表里面会生成一个   book_id的列 可以通过这个查
+
+后台管理
+
+		编辑settings.py文件，设置编码、时区
+			LANGUAGE_CODE = 'zh-Hans'
+			TIME_ZONE = 'Asia/Shanghai'
+		创建一个管理员用户
+			python manage.py createsuperuser，按提示输入用户名、邮箱、密码
+		启动之后打开127.0.0.1:8000/admin   登录就能看到页面了
+
+
+
+		向admin注册booktest的模型
+			打开booktest/admin.py文件，注册模型
+			from django.contrib import admin
+			from models import BookInfo
+			admin.site.register(BookInfo)
+
+		ModelAdmin对象
+			ModelAdmin类是模型在Admin界面中的表示形式
+			定义：定义一个类，继承于admin.ModelAdmin，注册模型时使用这个类
+			class HeroAdmin(admin.ModelAdmin):
+
+			使用方式一：注册参数
+			admin.site.register(HeroInfo,HeroAdmin)
+			使用方式二：注册装饰器
+			@admin.register(HeroInfo)
+			class HeroAdmin(admin.ModelAdmin):
+
+		admin 中添加关联
+
+		如果后来要加如个人用户表
+			在urls中
+				from django.contrib.auth.models import AbsrtactUser
+				class User(AbsrtactUser,models.Model):
+					pass
+
+			在setting中设置 django 认证系统使用的模型类
+			AUTH_USER_MODEL='user.User'			是自己定义的模型类
+
+	自定义文件存储类		修改setting中的DEFAULT_FILE_STORAGE= 你自己定义的存储类
+
+		修改文件的上传行为 和存储行为		得有一个client.conf 配置文件
+		默认是使用FileSystemStirage这个类他是继承Storage    我们重写一个类继承Storage   并且实现方法
+			默认文件是传到setting中MEDIA_ROOT设置的地方
+
+		编写自定义存储系统  https://yiyibooks.cn/xx/Django_1.11.6/howto/custom-file-storage.html
+			必须重写 open 和save 类
+			class DFSstorage(Storage):
+				def _open(self,name,mode='rb'):
+				'''打开文件时使用'''
+					pass
+				def _save(self,name,content):
+				#name 上传的名字
+				#content 包含上传文件的file对象
+
+				#构建 一个client对象
+				fdfs_client = Fdfs_client('文件的conf配置文件的绝对路径')
+				注意：windows环境下绝对路径会发生转义，需要加上 "r" 说明是原生字符串
+				client.upload_by_filename(r'图片文件绝对路径')
+						by_filename() 是根据文件名字上传
+						by_buffer()  是根据内容上传			content.read()  可以获取文件内容
+
+写视图文件  就是前台的文件				（进来一个url请求 去掉域名和端口进行匹配 成功返回页面 不成功返回404）
+
+		一个url()对象包括：
+		正则表达式
+		视图函数
+		名称name
+
+		想获得url中的参数 用括号括起来 然后在视图中接受
+
+		正则表达式命名组，通过关键字参数传递给视图，本例中关键字参数为id  ?<id>
+		url(r'(?<id>\d+)')
+
+		可以给url取名字   name  如果有include 增用namespace    用于反向解析
+
+	错误模板
+
+		404  在template下面写404.html
+			settings.py中修改调试
+				DEBUG = False
+				ALLOWED_HOSTS = ['*', ]
+
+		505	在视图代码中出现运行时错误
+
+		400 错误来自客户端的操作
+
+
+	request 对象
+
+
+		path：一个字符串，表示请求的页面的完整路径，不包含域名
+		method：一个字符串，表示请求使用的HTTP方法，常用值包括：'GET'、'POST'
+		encoding：一个字符串，表示提交的数据的编码方式
+		如果为None则表示使用浏览器的默认设置，一般为utf-8
+		这个属性是可写的，可以通过修改它来修改访问表单数据使用的编码，接下来对属性的任何访问将使用新的encoding值
+		GET：一个类似于字典的对象，包含get请求方式的所有参数
+		POST：一个类似于字典的对象，包含post请求方式的所有参数
+		FILES：一个类似于字典的对象，包含所有的上传文件
+		COOKIES：一个标准的Python字典，包含所有的cookie，键和值都为字符串
+		session：一个既可读又可写的类似于字典的对象，表示当前的会话，只有当Django 启用会话的支持时才可用，详细内容见“状态保持”
+
+
+		QueryDict对象 类似以字典 可以重复的字典
+
+		get 传参 在url地址中传参
+			配置url 	url(r'^getTest1/$', views.getTest1),
+			定义视图文件中对应的视图 是对应的模板文件
+
+			一对一
+			用  request.GET['']   来取值
+
+			一对多
+			   a=request.GET.getlist('a')
+
+
+
+		post 在表单中传参
+			method='post' action='apptest/posttest1'		action 表示提交到哪里 和url保持一致
+
+			根据提交的 name：value   就是name 对应的值
+			通过request.POST['name']   或者request.POST.get('name')   request.POST.getlist('name')
+
+
+
+	response 浏览器给客户端的返回信息
+
+		cookie ： 存储在浏览器中的一段文本信息  以键值对的方式存储
+		set_cookie(key, value='', max_age=None, expires=None)：设置Cookie max_age是过期时间
+		可以在response中设置 返回给客户端存储  例如
+			response = HttpResponse()
+			response.set_cookie('t1','abc')
+		获取cookie
+			cookie = request.COOKIES
+				if cookie.has_key('t1')
+					response.write(cookie['ti'])
+
+		基于HttpRsponse的子类
+
+			HttpResponseRedirect		重定向
+			return HttpResponseRedirect('js/')
+
+			JsonResponse		json异步请求
+			return JsonResponse({'list': 'abc'})
+
+		状态保持
+			浏览器是无状态的 不知道你之前做过什么  所以要用cookie 或者session来记录你之前做过的事情
+			cookie  存在浏览器端的
+
+
+			session  存在服务器端的
+				启用会话后，每个HttpRequest对象将具有一个session属性，它是一个类字典对象
+				get(key, default=None)：根据键获取会话的值
+				clear()：清除所有会话
+				flush()：删除当前的会话数据并删除会话的Cookie
+				del request.session['member_id']：删除会话
+				会话过期时间
+					set_expiry(value)：设置会话的超时时间
+					如果没有指定，则两个星期后过期
+					如果value是一个整数，会话将在values秒没有活动后过期
+					若果value是一个imedelta对象，会话将在当前时间加上这个指定的日期/时间过期
+					如果value为0，那么用户会话的Cookie将在用户的浏览器关闭时过期
+					如果value为None，那么会话永不过期
+				session三种保存方式
+					1.是存在数据库中的
+						SESSION_ENGINE='django.contrib.sessions.backends.db'
+					2.存在内存中中
+					3.存在缓存中的
+
+					在settings里面可以设置 保存在哪里的
+					例如可以保存在redis中
+						SESSION_ENGINE = 'redis_sessions.session'
+						SESSION_REDIS_HOST = 'localhost'
+						SESSION_REDIS_PORT = 6379
+						SESSION_REDIS_DB = 0
+						SESSION_REDIS_PASSWORD = ''
+						SESSION_REDIS_PREFIX = 'session'
+				session依赖于cookie    服务器上通过cookie来区别不同的session
+
+模板
+		包含 html 静态
+		动态插入部分
+		可以放在根目录下面 也能放在项目的目录下面
+		django模板语言			DTL（Django templates language）
+			变量{{ name }}
+			标签 { % 代码块 % }
+			过滤器
+			注释{# 代码或html #}
+		for
+			{ %for ... in ...%}
+			循环逻辑
+			{{forloop.counter}}表示当前是第几次循环
+			{ %empty%}
+			给出的列表为或列表不存在时，执行此处
+			{ %endfor%}
+		if
+			{ %if ...%}
+			逻辑1
+			{ %elif ...%}
+			逻辑2
+			{ %else%}
+			逻辑3
+			{ %endif%}
+		comment
+			{ % comment % }
+			多行注释
+			{ % endcomment % }
+		include：加载模板并以标签内的参数渲染
+			{ %include "foo/bar.html" % }
+		url：反向解析
+			{ % url 'name' p1 p2 %}
+		csrf_token：这个标签用于跨站请求伪造保护
+			{ % csrf_token %}
+		布尔标签：and、or，and比or的优先级高
+
+		过滤器
+			语法：{ { 变量|过滤器 }}，例如{ { name|lower }}，表示将变量name的值变为小写输出
+			使用管道符号 (|)来应用过滤器
+			通过使用过滤器来改变变量的计算结果
+			可以在if标签中使用过滤器结合运算符
+
+		反向解析
+			1.在views中使用  from django.core.urlresolvers import reverse
+				通常配置重定向   redirect(reverse('namespace:name')
+
+			2.在网页文件中
+				{ % url 'name' p1 p2 %}   在html中action=‘ ’
+			‘name’   写 ‘namespace：name’
+				namespace 是第一层url中的   第二个name 是视图中的名字
+				p1 p2 是传过来的值   url(r'(\d+)/(\d+)',vires.index,name=name)
+				可以根据html中的反向解析来找对应的url
+
+	模板继承
+		block标签：在父模板中预留区域，在子模板中填充
+		extends继承：继承，写在模板文件的第一行
+
+		在一个base.html中写html文件 在需要挖坑的地方写{%block name %}	{% endblock name%}
+		在需要继承的模板中 {% extends 'base.html'%}   {%block name%} 	{% endblock name%}
+			ps:是不是可以理解为替换
+
+		html转义    Django对字符串进行自动HTML转义  视图中传到模板中的自动转义
+			< 会转换为&lt;
+			> 会转换为&gt;
+			' (单引号) 会转换为&#39;
+			" (双引号)会转换为 &quot;
+			& 会转换为 &amp;
+			关闭的话	{{ data|safe }}   用safe 过滤就行了
+				或者{ % autoescape off %}
+					{{ body }}
+					{ % endautoescape %}
+
+		csrf 跨站请求伪造  可以不再你的网站向你的网站发起请求也成功
+			在发起表单post的时候 加 {% csrf_token %} 就行了
+			或者加验证码也能防御
+
+		验证码问题		表单的image的src指向这个函数就行了 例如 <img src=''>
+			首先在服务器上面创建验证码图片用 	from io import BytesIO  在内存中做操作
+			request.session['code'] = 字符     用来做验证的
+			然后 HttpResponse(buf,'image/png')			返回一个图片
+			思路就是 刷新就请求图片视图在图片视图中把值给session 然后用户输入提交到
+				验证视图 然后通过session中的值和post提交过来的值作比较
+
+
+			from django.http import HttpResponse
+			def index(request):
+				return HttpResponse(‘hello’)
+
+		引入模板文件
+			def index(request):
+
+				list = BookInfo.objects.all()
+				context={‘list’:'list1'}
+				return render(request,'apptest/index.html',context)
+				render 就是渲染 填坑
+		主项目里面的urls import include   然后url(r'^',include('apptest.urls'))
+			在apptest urls中定义路由
+
+		创建template/apptest/index.html  然后在setting中TEMPLATES 设置 DIRS :[os.path.join(BASE_DIR,'templates')]
+
+	模板
+		1.加载模板文件，返回模板对象
+		temp = load.get_template(‘index.html’)
+		2.定义模板上下文
+		context = RequestContext(request,context)
+		3.模板渲染
+		static_html = temp.render(context)
+
+		可以直接使用 render（request,'index.html',context）
+
+
+
+高级
+	静态文件			不在服务端进行处理的  直接拿过去就给浏览器了 所以会有逻辑路径
+		manage同级创建一个static
+		setting 中设置
+			STATIC_URL = '/static/'  			这是逻辑上显示的路径
+			STATICFILES_DIRS 中设置os.path.join(BASE_DIR, 'static')			物理上存在的路径
+		如果在网页文件中需要用到静态文件的时候  要在上面引入 { % load static from staticfiles %}
+
+		例如页面中要用 	<img src="{ % static "my_app/myexample.jpg" %}" alt="My image"/>
+			这是从setting中找STATICFILES_DIRS 路径里面的东西
+
+
+	中间键 面向切面编程	 		通俗理解 你可以用中间键干预django项目的执行 而不用改源代码
+		在setting中有MIDDLEWARE_CLASSES 可以一个类 是在项目中自己定义的文件中的类
+		这个类中写方法  就会被调用 方法名必须和下面一样
+			_init _：无需任何参数，服务器响应第一个请求的时候调用一次，用于确定是否启用当前中间件
+			process_request(request)：执行视图之前被调用，在每个请求上调用，返回None或HttpResponse对象
+			process_view(request, view_func, view_args, view_kwargs)：调用视图之前被调用，在每个请求上调用，返回None或HttpResponse对象
+			process_template_response(request, response)：在视图刚好执行完毕之后被调用，在每个请求上调用，返回实现了render方法的响应对象
+			process_response(request, response)：所有响应返回浏览器之前被调用，在每个请求上调用，返回HttpResponse对象
+			process_exception(request,response,exception)：当视图抛出异常时调用，在每个请求上调用，返回一个HttpResponse对象
+
+		例如在apptest新建expo.py 里面有一个类expo2 在setting中MIDDLEWARE_CLASSES  写 apptest.expo.expo2
+		然后执行的时候就会 在哪一步去找对应的方法
+
+	上传图片
+		图片存储路径
+			在项目根目录下创建media文件夹
+			图片上传后，会被保存到“/static/media/cars/图片文件”
+			打开settings.py文件，增加media_root项
+				MEDIA_ROOT=os.path.join(BASE_DIR,"static/media")
+
+
+		当Django在处理文件上传的时候，文件数据被保存在request.FILES
+		FILES中的每个键为<input type="file" name="" />中的name
+		注意：FILES只有在请求的方法为POST 且提交的<form>带有
+			enctype="multipart/form-data" 的情况下才会包含数据。否则，FILES 将为一个空的类似于字典的对象
+		使用模型处理上传文件：将属性定义成models.ImageField类型
+		上传文件html
+				<form method="post" action="upload/" enctype="multipart/form-data">
+					<input type="text" name="title"><br>
+					<input type="file" name="pic"/><br>
+					<input type="submit" value="上传">
+				</form>
+		处理视图代码
+		if request.method == "POST":
+			f1 = request.FILES['pic']							请求中的文件给f1
+			fname = '%s/cars/%s' % (settings.MEDIA_ROOT,f1.name)	服务器文件路径拼接
+			with open(fname, 'w') as pic:
+				for c in f1.chunks():
+					pic.write(c)							保存文件
+			return HttpResponse("ok")
+		else:
+			return HttpResponse("error")
+
+
+		pic=models.ImageField(upload_to='cars/')
+
+
+	分页
+		Paginator对象			from django.core.paginator import *
+		Paginator(列表,int)：返回分页对象，参数为列表数据，每面数据的条数
+		属性
+			count：对象总数
+			num_pages：页面总数
+			page_range：页码列表，从1开始，例如[1, 2, 3, 4]
+
+		方法
+			page(num)：下标以1开始，如果提供的页码不存在，抛出InvalidPage异常
+					Paginator对象的page()方法返回Page对象，不需要手动构造
+				属性
+				object_list：当前页上所有对象的列表
+				number：当前页的序号，从1开始
+				paginator：当前page对象相关的Paginator对象
+				方法
+					has_next()：如果有下一页返回True
+					has_previous()：如果有上一页返回True
+					has_other_pages()：如果有上一页或下一页返回True
+					next_page_number()：返回下一页的页码，如果下一页不存在，抛出InvalidPage异常
+					previous_page_number()：返回上一页的页码，如果上一页不存在，抛出InvalidPage异常
+					len()：返回当前页面对象的个数
+					迭代页面对象：访问当前页面中的每个对象
+										例如找 page对应Paginator的属性用paginator
+				例如 list1 =Paginator(list,int)
+					然后在html中调用方法
+
+			自连接    就是表 里面外键之类的 然后通过主表访问其他或者通过其他访问主表
+				上级对象：area.aParent						a：b   1：n					b.a
+				下级对象：area.areainfo_set.all() 			a.b_Set
+				示例  这是一级
+				insert into 'apptest_areainfo2' values ('110100','北京市',null);
+				这是二级
+				insert into 'apptest_areainfo2' values ('11001','北京市','110100');
+				这是三级
+				insert into 'apptest_areainfo2' values ('11100','北京市','11001');
+
+		ajax（没成功）    目前理解来说就是 通过jQuery  向另一个视图获取数据然后展示  是通过jQuery script 来实现的
+			首先创建一个首页视图  然后再创建一个视图 让第一个视图中的script &get 向这里发请求
+					第二个视图返回的是一个json数据 然后页面中的jQuery处理输出
+					用jQuery的   $.get('url'，caloback函数)   来获取这个视图的数据
+
+
+		缓存
+			通过设置决定把数据缓存在哪里，是数据库中、文件系统还是在内存中
+			通过setting文件的CACHES配置来实现
+			参数TIMEOUT：缓存的默认过期时间，以秒为单位，这个参数默认是300秒，即5分钟；
+				 设置TIMEOUT为None表示永远不会过期，值设置成0造成缓存立即失效
+
+
+		权限检查
+			login_required 装饰器
+				先配置setting  LOGIN_URL='/user/login'
+			这是django 自带的 	from django.contrib.auth.decorators import login_required
+				自定义Mixin
+				class PermissionRequiredMixin(object):
+					@classmethod
+					def as_view(cls,**initkwargs):
+						#调用父类的方法
+						view = super(PermissionRequiredMixin,cls).as_view(**initkwargs)
+						return login_required(view)
+				在views中如果一个先要权限检查 直接继承就可以了
+					class userview(PermissionRequiredMixin,View):
+					def post(self,request):
+
+						next_url = request.GET('next',reverse('namespace:name'))
+						return redirect(next_url)
+
+
+
+	第三方
+		富文本编辑器（tinymce）			这里使用的是这个编辑器
+		1.可以在admin后台显示
+			安装tinymce
+			setting设置
+			url 设置
+			model中设置
+				引入 from tinymce.models import HTMLField
+				title = HTMLField（）
+			在admin中引入 就可以用了
+
+		2.可以在网页中显示 （要加js代码 引入 然后调用）
+
+
+		发送邮件： 	内置from django.core.mail import send_mail
+
+
+			被定义在django.core.mail	送邮件需要使用SMTP服务器，
+				常用的免费服务器有：163、126、QQ，下面以163邮件为例。
+			在客户端开启授权密码   我的是python8080
+			然后在setting中配置参数
+				EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+				EMAIL_HOST = 'smtp.163.com'
+				EMAIL_PORT = 25
+				#发送邮件的邮箱
+				EMAIL_HOST_USER = 'itcast88@163.com'
+				#在邮箱中设置的客户端授权密码
+				EMAIL_HOST_PASSWORD = 'python8080'
+				#收件人看到的发件人
+				EMAIL_FROM = 'python<itcast88@163.com>'
+
+
+			然后在应用中
+			from django.core.mail import send_mail
+				def send(request):
+					msg='<a href="http://www.itcast.cn/subject/pythonzly/index.shtml" target="_blank">点击激活</a>'
+					send_mail('注册激活','',settings.EMAIL_FROM,
+							  ['itcast88@163.com'],
+							  html_message=msg)
+					return HttpResponse('ok')
+			send_mail(邮件标题，邮件正文，发件人（setting.EMALL_FROM）,收件人list)
+
+	全文检索：
+		haystack：django的一个包，可以方便地对model里面的内容进行索引、搜索，设计为支持whoosh,solr,Xapian,Elasticsearc四种全文检索引擎后端，属于一种全文检索的框架
+		whoosh：纯python编写的全文搜索引擎
+		jieba：中文分词库
+
+
+
+	celery		当浏览器中发送一个耗时的操作  可以用这个来瞬间返回response 而费时的操作给celery来做
+		示例一的解决：将耗时的程序放到celery中执行
+		示例二的解决：使用celery定时执行
+		名词
+			任务task：就是一个Python函数
+			队列queue：将需要执行的任务加入到队列中
+			工人worker：在一个新进程中，负责执行队列中的任务
+			代理人broker：负责调度，在布置环境中使用redis
+
+		发出者发出请求到队列 然后代理人从队列中拿出来执行
+		实质上就是 调用 你定义的函数 吧请求交给task函数处理  然后redis或者别的从task中拿出请求自己做
+		（感觉处理者吧东西放到redis数据库 然后 用celery 从redis中拿出来执行）
+
+		首先安装 pip install celery
+		1.创建一个celery_task->task文件
+			#创建实例对象
+			app = Celery('name',broker = 代理人)		如果是redis  broker = 'redis://127.0.0.1:6379/几号数据库'
+			#定义任务函数
+			@app.task
+			def zhixing():
+				pass
+		2.在代码中要调用的地方写函数名.delay()
+			例如 zhixing.delay()
+		3.在redis数据库中定义工人（worker）
+			如果在本机直接在task项目目录下执行 celery -A celery_tasks.tasks worker -l info	(celery_tasks.tasks是app路径)
+			如果不是本机在其他地方 需要虚拟环境安装celery 拷贝一份app文件过去 在其中加上
+			ps:是不是在一台机器上面都要下面初始化 在task里面
+				#django环境初始化
+				import os
+				import django
+				os.environ.setdefault('DJANGO_SETTINGS_MODEL','项目名.settings')
+				django.setup()
+
+	缓存  （一般使用redis作为数据库的缓存）
+		django-redis   	是一个使 Django 支持 Redis cache/session 后端的全功能组件.
+		需要安装配置参数setting
+			#这是配置缓存		吧缓存配置成redis存储
+			CACHES = {
+					"default": {
+						"BACKEND": "django_redis.cache.RedisCache",
+						"LOCATION": "redis://127.0.0.1:6379/1",
+						"OPTIONS": {
+							"CLIENT_CLASS": "django_redis.client.DefaultClient",
+						}
+					}
+				}
+			#把session存进缓存中
+			SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+			SESSION_CACHE_ALIAS = "default"
+
+		如果缓存某个页面
+			最基本的接口是 set(key, value, timeout) 和 get(key):
+		例如：
+			>>> cache.set('my_key', 'hello, world!', 30)
+			>>> cache.get('my_key')
+			'hello, world!'
+
+
+		模板继承
+
+	分布式图片服务器  FastDFS
+		FastDFS 架构包括 Tracker server 和 Storage server。
+			客户端请求 Tracker server 进行文 件上传、下载，通过 Tracker server 调度最终由 Storage server 完成文件上传和下载。
+
+			Tracker server 作用是负载均衡和调度，通过 Tracker server 在文件上传时可以根据一些 策略找到 Storage server 提供文件上传服务。可以将 tracker 称为追踪服务器或调度服务 器。
+			Storage server 作用是文件存储，客户端上传的文件最终存储在 Storage 服务器上，
+
+			客户端上传文件后存储服务器将文件 ID 返回给客户端，此文件 ID 用于以后访问该文 件的索引信息。文件索引信息包括:组名，虚拟磁盘路径，数据两级目录，文件名
+		下载
+			安装依赖的包
+			安装fastdfs
+			配置
+				 配置跟踪服务器tracker
+					base_path=/home/python/fastdfs/tracker
+				配置存储服务器storage
+					base_path=/home/python/fastdfs/storage
+					store_path0=/home/python/fastdfs/storage
+					tracker_server=自己ubuntu虚拟机的ip地址:22122
+			启动tracker 和 storage
+				sudo service fdfs_trackerd start  或者sudo /usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf start
+
+				sudo service fdfs_storaged start   或者sudo /usr/bin/fdfs_storaged /etc/fdfs/storage.conf start
+			测试是否安装成功
+				1. sudo cp /etc/fdfs/client.conf.sample /etc/fdfs/client.conf
+				2. 编辑/etc/fdfs/client.conf配置文件  sudo vim /etc/fdfs/client.conf
+					修改内容：
+						base_path=/home/python/fastdfs/tracker
+						tracker_server=自己ubuntu虚拟机的ip地址:22122
+			上传文件测试：
+				fdfs_upload_file /etc/fdfs/client.conf 要上传的图片文件
+				如果返回类似group1/M00/00/00/rBIK6VcaP0aARXXvAAHrUgHEviQ394.jpg的文件id则说明文件上传成功
+		安装nginx 做静态解析
+			安装依赖包
+			下载nginx和fastdfs相结合的模块 并解压
+			安装nginx 	sudo ./configure --prefix=/usr/local/nginx/ --add-module=fastdfs-nginx-module-master解压后的目录的绝对路径/src
+			make & make install  生成2进制并把二进制复制到指定的文件中
+			...
+			配置nginx 并启动 让nginx作为静态文件服务器解析到fastdfs文件上面
+
+			用代码 使python上传和获取服务器上面的数据
+			需要安装 (client-py-master)这个教程中的zip文件
+				1. workon django_py3
+				2. 进入fdfs_client-py-master.zip所在目录
+				3. pip install fdfs_client-py-master.zip
+				4.
+
+				>>> from fdfs_client.client import Fdfs_client
+				>>> client = Fdfs_client('/etc/fdfs/client.conf')
+				>>> ret = client.upload_by_filename('test')
+				>>> ret
+				{'Group name':'group1','Status':'Upload successed.', 'Remote file_id':'group1/M00/00/00/
+					wKjzh0_xaR63RExnAAAaDqbNk5E1398.py','Uploaded size':'6.0KB','Local file name':'test'
+					, 'Storage IP':'192.168.243.133'}
+
+
+
+
+ps：网页中写的东西向数据库中写  用post 传到一个视图中 然后
+			例如    test= Heroinfo.object.get(pk=1)
+					test.hero=request.POST['name']
+					test.save()
+
+			django数据量有专门给用户的create_user
+			user = User.objects.create_user('user','email','pwd')
+
+
+		如果向一般的模型中添加文件
+			Adress.objects.create(user=user,addr=addr,code=code)
+		
+		
+		
+
+	

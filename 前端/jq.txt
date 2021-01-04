@@ -1,0 +1,103 @@
+js 
+js开发： 是一门脚本语言 由浏览器解释执行 不需要编译
+js声明变量： var 变量名字
+js 声明函数： function 函数的名字（参数的名字）{ }
+
+js 开发步骤：
+	1.确定事件
+		在input 或者别的里面会有调用这个函数
+	2.事件要触发函数，所以我们要声明函数
+		function f(){		}
+	3.函数里面通常是做一些交互才操作，弹框，修改页面，动态添加一些东西。
+		函数体里面放操作的代码
+文档加载顺序问题：
+	文档执行到js 会对代码进行预处理 然后再执行
+		预处理会跳过执行语句 只处理声明语句(会导致你的声明语句在执行语句下面也可以被执行)
+		好像是要在function外面声明可以不按顺序
+	页面加载事件 要么写在boay上面  如果写在下面 就不需要页面加载事件了 也会执行
+	
+HTML DOM （文档对象模型）
+	网页被加载时 会创建文档对象模型
+	
+	查找HTML元素：		js想要操作html元素要先找到它
+		通过id查找
+			var x=document.getElementById("intro"); 
+
+		通过标签名查找
+			var x=document.getElementById("main");
+			var y=x.getElementsByTagName("p"); 
+
+		通过类名查找 (过时)
+		
+按键点击示例：
+	<script>
+      function clickan() {
+            alert("点击事件")
+        }
+    </script>
+	</head>
+	<body>
+	<form action="index.html">
+    <input type="submit" id="tijiao" onclick="clickan()">
+
+		
+
+
+
+
+jq 是一个快速 小巧 丰富的js库 其实就是把代码封装到了一个js文件里面 直接调用就行了
+	jq 封装的基础是数组
+	每个函数 其实都封装了遍历
+	val()
+		遍历数组中的每个元素
+		array = 每个元素.value
+	val(参数)
+		每个元素.value = 参数
+	
+基本的套路就是 先用$( 这里是选择器). 这里是属性  可以直接去api里面找	
+
+转换：
+使用js方式获取的对象是js的DOM对象，使用jQuery方式获取的对象是jQuery对象
+	两者的转换关系如下：
+		js的DOM对象转换成jQuery对象，语法：$(js对象)
+		jQuery对象转换成js对象，语法：jquery对象[索引] 或 jquery对象.get(索引)
+
+属性：	jq 中属性都是() 中没有值 默认是获取值 如果()中有值 默认是添加值
+	attr(name|pro|key,val|fn)    -> attribute 属性
+	removeAttr(name)
+
+	prop(n|p|k,v|f)1.6+			 -> property 属性,性质
+	removeProp(name)1.6+
+
+	attr(属性名)  -> value = get(key)
+	attr(属性名,属性值) -> set(key,value)
+
+	attr : 只能获取标签内已声明的属性
+		比如特点 checkbox 未选中
+		不能动态判断是 checked = false
+
+	prop : 可以获取标签的状态
+		
+
+jq作用：
+	1.写的少 做得多
+	2.将我们的页面js代码与html页面代码分离
+	
+	
+点击示例：
+	<script type="text/javascript" src="jquery-1.8.3.js"></script>
+	<script>
+        $(function () {
+            //给按钮绑定事件
+            $("#tijiao").click(function () {
+                alert("点击了")
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <form action="index.html">
+        用户名：<input type="text" id="username">
+        <input type="submit" value="提交" id="tijiao">
+	

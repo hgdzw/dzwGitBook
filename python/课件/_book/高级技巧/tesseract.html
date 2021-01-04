@@ -1,0 +1,892 @@
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <!-- Start book 爬虫课程 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>tesseract OCR识别 | 爬虫课程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="zhuwei">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-prism/prism-solarizedlight.css">
+        
+    
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-sectionx/sectionx.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-ace/ace.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-emphasize/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+    
+        <link rel="stylesheet" href="../styles/website.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../高级技巧/代理池.html" />
+    
+    
+    <link rel="prev" href="../高级技巧/打码平台.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="4.4"
+        data-chapter-title="tesseract OCR识别"
+        data-filepath="高级技巧/tesseract.md"
+        data-basepath=".."
+        data-revision="Mon Feb 11 2019 22:53:05 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        爬虫课程介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="爬虫预备知识/爬虫预备知识.html">
+            
+                
+                    <a href="../爬虫预备知识/爬虫预备知识.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        爬虫预备知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="爬虫预备知识/爬虫定义、分类和流程.html">
+            
+                
+                    <a href="../爬虫预备知识/爬虫定义、分类和流程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        爬虫定义、分类和流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="爬虫预备知识/http和https的复习.html">
+            
+                
+                    <a href="../爬虫预备知识/http和https的复习.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        http和https的复习
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="网络数据获取/网络数据获取.html">
+            
+                
+                    <a href="../网络数据获取/网络数据获取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        网络数据获取
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="网络数据获取/请求分析流程.html">
+            
+                
+                    <a href="../网络数据获取/请求分析流程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        请求分析流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="网络数据获取/requests模块介绍与使用.html">
+            
+                
+                    <a href="../网络数据获取/requests模块介绍与使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        requests 模块
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="数据提取/数据提取.html">
+            
+                
+                    <a href="../数据提取/数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        数据提取
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="数据提取/数据提取概念和数据的分类.html">
+            
+                
+                    <a href="../数据提取/数据提取概念和数据的分类.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        数据提取概念和数据的分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="数据提取/JSON数据提取.html">
+            
+                
+                    <a href="../数据提取/JSON数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        JSON 与 jsonpath 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="数据提取/使用正则表达式提取数据.html">
+            
+                
+                    <a href="../数据提取/使用正则表达式提取数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        正则表达式 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="数据提取/xpath数据提取.html">
+            
+                
+                    <a href="../数据提取/xpath数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        html/xml 与 xpath 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="数据提取/bs4数据提取.html">
+            
+                
+                    <a href="../数据提取/bs4数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        beautifulsoup 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="数据提取/csv数据转换.html">
+            
+                
+                    <a href="../数据提取/csv数据转换.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        json、csv 数据转换
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="高级技巧/高级技巧.html">
+            
+                
+                    <a href="../高级技巧/高级技巧.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        高级技巧
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="高级技巧/高性能爬虫.html">
+            
+                
+                    <a href="../高级技巧/高性能爬虫.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        高性能爬虫
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="高级技巧/selenium.html">
+            
+                
+                    <a href="../高级技巧/selenium.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        selenium
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="高级技巧/打码平台.html">
+            
+                
+                    <a href="../高级技巧/打码平台.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        打码平台
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.4" data-path="高级技巧/tesseract.html">
+            
+                
+                    <a href="../高级技巧/tesseract.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        tesseract OCR识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="高级技巧/代理池.html">
+            
+                
+                    <a href="../高级技巧/代理池.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        代理池
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="高级技巧/常见反扒手段.html">
+            
+                
+                    <a href="../高级技巧/常见反扒手段.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        常见反扒手段
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="数据保存/数据保存.html">
+            
+                
+                    <a href="../数据保存/数据保存.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        数据保存
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="数据保存/mongodb.html">
+            
+                
+                    <a href="../数据保存/mongodb.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        mongodb
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="scrapy框架/scrapy框架.html">
+            
+                
+                    <a href="../scrapy框架/scrapy框架.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        scrapy框架
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="scrapy框架/scrapy基本使用.html">
+            
+                
+                    <a href="../scrapy框架/scrapy基本使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        scrapy 基本使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="scrapy框架/scrapy高级使用.html">
+            
+                
+                    <a href="../scrapy框架/scrapy高级使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        scrapy 高级使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="scrapy框架/scrapy项目部署.html">
+            
+                
+                    <a href="../scrapy框架/scrapy项目部署.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        scrapy 项目部署
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="scrapy框架/scrapy redis使用.html">
+            
+                
+                    <a href="../scrapy框架/scrapy redis使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        scrapy redis使用
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="附录/附录.html">
+            
+                
+                    <a href="../附录/附录.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        附录
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="附录/HTTP请求列表.html">
+            
+                
+                    <a href="../附录/HTTP请求列表.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        HTTP请求列表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="附录/HTTP响应列表.html">
+            
+                
+                    <a href="../附录/HTTP响应列表.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        HTTP响应列表
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本书使用 GitBook 发布
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >爬虫课程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <html><head></head><body><h1 id="tesseract-ocr&#x8BC6;&#x522B;">tesseract OCR&#x8BC6;&#x522B;</h1>
+<sec data-title="&#x5B66;&#x4E60;&#x76EE;&#x6807;" data-id="section0" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>&#x5B66;&#x4E60;&#x76EE;&#x6807;<a class="pull-right section atTitle btn btn-default" target="section0"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section0"><div class="panel-body">
+<ul>
+<li><strong>&#x3010;&#x4E86;&#x89E3;&#x3011;</strong> tesseract &#x662F;&#x4EC0;&#x4E48;</li>
+<li><strong>&#x3010;&#x638C;&#x63E1;&#x3011;</strong> tesseract &#x57FA;&#x672C;&#x4F7F;&#x7528;</li>
+</ul>
+</div></div></div></sec>
+<sec data-title="tesseract &#x4ECB;&#x7ECD;&#x4E0E;&#x4F7F;&#x7528;" data-id="section01" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>tesseract &#x4ECB;&#x7ECD;&#x4E0E;&#x4F7F;&#x7528;<a class="pull-right section atTitle btn btn-default" target="section01"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section01"><div class="panel-body">
+<h4 id="&#x4ECB;&#x7ECD;">&#x4ECB;&#x7ECD;</h4>
+<p>Tesseract &#x662F;&#x4E00;&#x4E2A; OCR &#x5E93;,&#x76EE;&#x524D;&#x7531; Google &#x8D5E;&#x52A9;(Google &#x4E5F;&#x662F;&#x4E00;&#x5BB6;&#x4EE5; OCR &#x548C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x6280;&#x672F;&#x95FB;&#x540D;&#x4E8E;&#x4E16;&#x7684;&#x516C;&#x53F8;)&#x3002;Tesseract &#x662F;&#x76EE;&#x524D;&#x516C;&#x8BA4;&#x6700;&#x4F18;&#x79C0;&#x3001;&#x6700;&#x7CBE;&#x786E;&#x7684;&#x5F00;&#x6E90; OCR &#x7CFB;&#x7EDF;&#xFF0C;&#x9664;&#x4E86;&#x6781;&#x9AD8;&#x7684;&#x7CBE;&#x786E;&#x5EA6;&#xFF0C;Tesseract &#x4E5F;&#x5177;&#x6709;&#x5F88;&#x9AD8;&#x7684;&#x7075;&#x6D3B;&#x6027;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BAD;&#x7EC3;&#x8BC6;&#x522B;&#x51FA;&#x4EFB;&#x4F55;&#x5B57;&#x4F53;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8BC6;&#x522B;&#x51FA;&#x4EFB;&#x4F55; Unicode &#x5B57;&#x7B26;&#x3002;</p>
+<h4 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h4>
+<h5 id="window-&#x5B89;&#x88C5;">Window &#x5B89;&#x88C5;</h5>
+<p>&#x4E0B;&#x8F7D;&#x53EF;&#x6267;&#x884C;&#x5B89;&#x88C5;&#x6587;&#x4EF6;&#xFF1A;<a href="https://code.google.com/p/tesseract-ocr/downloads/list" target="_blank">https://code.google.com/p/tesseract-ocr/downloads/list</a> &#x5B89;&#x88C5;&#x3002;</p>
+<h5 id="ubuntu-&#x5B89;&#x88C5;">Ubuntu &#x5B89;&#x88C5;</h5>
+<pre><code>    sudo apt-get install tesseract-ocr
+</code></pre><h5 id="mac-&#x5B89;&#x88C5;">Mac &#x5B89;&#x88C5;</h5>
+<pre><code>    brew install tesseract
+</code></pre><h5 id="&#x5B89;&#x88C5;-python-&#x5E93;">&#x5B89;&#x88C5; python &#x5E93;</h5>
+<pre><code>    pip install pytesseract
+</code></pre><h4 id="&#x73AF;&#x5883;&#x914D;&#x7F6E;">&#x73AF;&#x5883;&#x914D;&#x7F6E;</h4>
+<h5 id="mac-&#x548C;-linux-&#x73AF;&#x5883;&#x914D;&#x7F6E;">Mac &#x548C; Linux &#x73AF;&#x5883;&#x914D;&#x7F6E;</h5>
+<blockquote>
+<p>&#x6DFB;&#x52A0;&#x73AF;&#x5883;&#x53D8;&#x91CF;</p>
+<pre><code>    # /Users/zhuwei/Desktop/Tesseract/tessdata &#x4E3A;&#x8BED;&#x8A00;&#x8BAD;&#x7EC3;&#x5E93;&#x8DEF;&#x5F84;&#xFF0C;&#x53EF;&#x4EE5;&#x7F16;&#x8F91; ~/.bash_file &#x7EC8;&#x7AEF;&#x542F;&#x52A8;&#x65F6;&#x4F1A;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x811A;&#x672C;
+    export TESSDATA_PREFIX=/Users/zhuwei/Desktop/Tesseract/tessdata
+</code></pre><h5 id="window-&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;">Window &#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;</h5>
+<p>&#x6DFB;&#x52A0;&#x73AF;&#x5883;&#x53D8;&#x91CF;</p>
+<pre><code>    # C:\Program Files\Tesseract OCR\Tesseract &#x4E3A;&#x8BED;&#x8A00;&#x8BAD;&#x7EC3;&#x5E93;&#x8DEF;&#x5F84;
+    setx TESSDATA_PREFIX C:\Program Files\Tesseract OCR\Tesseract
+</code></pre></blockquote>
+<h4 id="&#x4F7F;&#x7528;">&#x4F7F;&#x7528;</h4>
+<h5 id="&#x547D;&#x4EE4;&#x884C;&#x7EC8;&#x7AEF;&#x4F7F;&#x7528;">&#x547D;&#x4EE4;&#x884C;&#x7EC8;&#x7AEF;&#x4F7F;&#x7528;</h5>
+<blockquote>
+<p>&#x663E;&#x793A;&#x5E2E;&#x52A9;</p>
+<pre><code>    tesseract --help
+</code></pre><p>&#x663E;&#x793A;&#x5F53;&#x524D;&#x8BAD;&#x7EC3;&#x8BED;&#x8A00;&#x5217;&#x8868;</p>
+<pre><code>    tesseract --list-langs
+</code></pre><p>&#x8BC6;&#x522B;</p>
+<pre><code>    tesseract &#x56FE;&#x7247; &#x8F93;&#x51FA;&#x8DEF;&#x5F84; -l &#x8BAD;&#x7EC3;&#x5E93;&#x540D;&#x79F0;
+</code></pre></blockquote>
+<h4 id="&#x4F7F;&#x7528;&#x6CE8;&#x610F;&#x4E8B;&#x9879;">&#x4F7F;&#x7528;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h4>
+<ol>
+<li>&#x4EC5;&#x9650;&#x4E8E;&#x6807;&#x51C6;&#x5B57;&#x4F53;&#x6837;&#x5F0F;&#xFF0C;&#x5BF9;&#x590D;&#x6742;&#x9A8C;&#x8BC1;&#x7801;&#x65E0;&#x6CD5;&#x5904;&#x7406;</li>
+<li>&#x5982;&#x679C;&#x56FE;&#x7247;&#x6709;&#x6E10;&#x53D8;&#x8BC6;&#x522B;&#x7387;&#x4E0D;&#x9AD8;&#xFF0C;&#x5EFA;&#x8BAE;&#x5728;&#x7F51;&#x9875;&#x622A;&#x56FE;&#x524D;&#x6267;&#x884C;js&#x53BB;&#x9664;&#x80CC;&#x666F;</li>
+</ol>
+<h5 id="python-&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528;">python &#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528;</h5>
+<pre><code>    # &#x5BFC;&#x5165;&#x6A21;&#x5757;
+    import pytesseract
+    # &#x5BFC;&#x5165;&#x56FE;&#x7247;&#x5E93; &#x3010;&#x6CE8;&#x610F;&#x3011;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x5E93;: pip install Pillow
+    # &#x5BFC;&#x5165;&#x5E93;
+    from PIL import Image
+
+    # &#x521B;&#x5EFA;&#x56FE;&#x7247;&#x5BF9;&#x8C61;
+    image = Image.open(&quot;&#x56FE;&#x7247;&#x8DEF;&#x5F84;&quot;)
+    # &#x8BC6;&#x522B;&#x56FE;&#x7247;
+    pytesseract.image_to_string(numImage, config=&quot;-psm 7&quot;))
+</code></pre></div></div></div></sec>
+<sec data-title="&#x6848;&#x4F8B;&#x4E00;&#x3001;&#x732B;&#x773C;&#x7535;&#x5F71;&#x8BC4;&#x5206;" data-id="section02" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>&#x6848;&#x4F8B;&#x4E00;&#x3001;&#x732B;&#x773C;&#x7535;&#x5F71;&#x8BC4;&#x5206;<a class="pull-right section atTitle btn btn-default" target="section02"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section02"><div class="panel-body">
+<h4 id="&#x76EE;&#x6807;&#x5730;&#x5740;">&#x76EE;&#x6807;&#x5730;&#x5740;</h4>
+<p><a href="http://maoyan.com/films/1218298" target="_blank">http://maoyan.com/films/1218298</a></p>
+<h4 id="&#x5B9E;&#x73B0;&#x6D41;&#x7A0B;">&#x5B9E;&#x73B0;&#x6D41;&#x7A0B;</h4>
+<ol>
+<li>&#x622A;&#x56FE;</li>
+<li>tesseract ocr&#x8BC6;&#x522B;</li>
+<li>&#x83B7;&#x53D6;&#x7ED3;&#x679C;</li>
+</ol>
+<h4 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h4>
+<pre><code class="lang-python"><span class="token comment">#!/usr/bin/python3</span>
+<span class="token comment"># -*- coding: utf-8 -*-</span>
+
+<span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">from</span> io <span class="token keyword">import</span> BytesIO
+<span class="token keyword">import</span> time
+<span class="token keyword">import</span> pytesseract
+
+<span class="token comment"># &#x5B9A;&#x4E49;&#x7F29;&#x653E;&#x6BD4;&#x4F8B;</span>
+scale <span class="token operator">=</span> <span class="token number">2.0</span>
+
+
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token string">&quot;./chromedriver&quot;</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>implicitly_wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">&quot;http://maoyan.com/films/1218298&quot;</span><span class="token punctuation">)</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token comment"># &#x8BA9;&#x80CC;&#x666F;&#x53D8;&#x767D;&#x8272;&#x548C;&#x6587;&#x5B57;&#x9ED1;&#x8272;&#xFF0C;&#x4F7F;&#x5B83;&#x66F4;&#x5BB9;&#x6613;&#x8FDB;&#x884C;&#x8BC6;&#x522B;</span>
+driver<span class="token punctuation">.</span>execute_script<span class="token punctuation">(</span><span class="token string">&apos;document.querySelector(&quot;.banner&quot;).style.background = &quot;white&quot;&apos;</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>execute_script<span class="token punctuation">(</span><span class="token string">&apos;document.querySelector(&quot;.stonefont&quot;).style.color = &quot;black&quot;&apos;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># &#x622A;&#x5C4F;&#x6574;&#x4F53;</span>
+png_img <span class="token operator">=</span> driver<span class="token punctuation">.</span>get_screenshot_as_png<span class="token punctuation">(</span><span class="token punctuation">)</span>
+img <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>BytesIO<span class="token punctuation">(</span>png_img<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># &#x5BFB;&#x627E;&#x5143;&#x7D20;</span>
+span_el <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">&apos;//span[@class=&quot;index-left info-num &quot;]/span[@class=&quot;stonefont&quot;]&apos;</span><span class="token punctuation">)</span><span class="token comment">#(&quot;.index-left.info-num&quot;)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>span_el<span class="token punctuation">)</span>
+
+<span class="token comment"># &#x83B7;&#x53D6;&#x5143;&#x7D20;&#x4F4D;&#x7F6E;&#xFF0C;&#x5B66;&#x4F1A;&#x6311;&#x98DF;&#x4F4D;&#x7F6E;</span>
+location <span class="token operator">=</span> span_el<span class="token punctuation">.</span>location
+left <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>location<span class="token punctuation">[</span><span class="token string">&quot;x&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> scale
+top <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>location<span class="token punctuation">[</span><span class="token string">&quot;y&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> scale
+<span class="token keyword">print</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span>
+size <span class="token operator">=</span> span_el<span class="token punctuation">.</span>size
+<span class="token comment"># size = {</span>
+<span class="token comment">#     &quot;width&quot;:400,</span>
+<span class="token comment">#     &quot;height&quot;:400</span>
+<span class="token comment"># }</span>
+right <span class="token operator">=</span> left <span class="token operator">+</span> <span class="token builtin">int</span><span class="token punctuation">(</span>size<span class="token punctuation">[</span><span class="token string">&quot;width&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> scale
+bottom <span class="token operator">=</span> top <span class="token operator">+</span> <span class="token builtin">int</span><span class="token punctuation">(</span>size<span class="token punctuation">[</span><span class="token string">&quot;height&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> scale
+
+<span class="token comment"># &#x6784;&#x5EFA;&#x622A;&#x56FE;</span>
+cut_info <span class="token operator">=</span> <span class="token punctuation">(</span>left<span class="token punctuation">,</span>top<span class="token punctuation">,</span>right<span class="token punctuation">,</span>bottom<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>cut_info<span class="token punctuation">)</span>
+img<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">&quot;test1.png&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># &#x622A;&#x53D6;&#x8BC6;&#x522B;&#x56FE;&#x7247;</span>
+img <span class="token operator">=</span> img<span class="token punctuation">.</span>crop<span class="token punctuation">(</span>cut_info<span class="token punctuation">)</span>
+
+<span class="token comment"># &#x83B7;&#x53D6;&#x6700;&#x7EC8;&#x7ED3;&#x679C;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x7ED3;&#x679C;:&quot;</span><span class="token punctuation">,</span>pytesseract<span class="token punctuation">.</span>image_to_string<span class="token punctuation">(</span>img<span class="token punctuation">,</span>config<span class="token operator">=</span><span class="token string">&quot;-psm 7&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+img<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">&apos;test2.png&apos;</span><span class="token punctuation">)</span>
+
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div></div></div></sec>
+<sec data-title="&#x6848;&#x4F8B;&#x4E8C;&#x3001;&#x81EA;&#x5982;&#x7F51;&#x4EF7;&#x683C;&#x63D0;&#x53D6;&#xFF08;&#x56DE;&#x5BB6;&#x4F5C;&#x4E1A;&#xFF09;" data-id="section03" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>&#x6848;&#x4F8B;&#x4E8C;&#x3001;&#x81EA;&#x5982;&#x7F51;&#x4EF7;&#x683C;&#x63D0;&#x53D6;&#xFF08;&#x56DE;&#x5BB6;&#x4F5C;&#x4E1A;&#xFF09;<a class="pull-right section atTitle btn btn-default" target="section03"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section03"><div class="panel-body">
+<h4 id="&#x76EE;&#x6807;&#x5730;&#x5740;">&#x76EE;&#x6807;&#x5730;&#x5740;</h4>
+<p><a href="http://sh.ziroom.com/z/vr/61712151.html" target="_blank">http://sh.ziroom.com/z/vr/61712151.html</a></p>
+<h4 id="&#x5B9E;&#x73B0;&#x6D41;&#x7A0B;">&#x5B9E;&#x73B0;&#x6D41;&#x7A0B;</h4>
+<ol>
+<li>&#x622A;&#x56FE;</li>
+<li>tesseract ocr&#x8BC6;&#x522B;</li>
+<li>&#x83B7;&#x53D6;&#x7ED3;&#x679C;</li>
+</ol>
+<h4 id="&#x5B9E;&#x73B0;&#x4EE3;&#x7801;">&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</h4>
+<pre><code class="lang-python"><span class="token comment">#!/usr/bin/python3</span>
+<span class="token comment"># -*- coding: utf-8 -*-</span>
+
+<span class="token keyword">import</span> pytesseract
+
+<span class="token comment"># &#x5BFC;&#x5165;&#x6A21;&#x5757;</span>
+<span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+
+<span class="token comment"># &#x5BFC;&#x5165;&#x56FE;&#x7247;&#x64CD;&#x4F5C;&#x6A21;&#x5757;</span>
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">from</span> io <span class="token keyword">import</span> BytesIO
+
+<span class="token comment"># &#x6784;&#x5EFA;&#x6D4F;&#x89C8;&#x5668;&#x5BF9;&#x8C61;</span>
+browser <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token string">&apos;./chromedriver&apos;</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># &#x8BA9;&#x6D4F;&#x89C8;&#x8BBF;&#x95EE;&#x9875;&#x9762;</span>
+browser<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">&quot;http://sh.ziroom.com/z/vr/61712151.html&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># &#x63D0;&#x53D6;&#x6570;&#x636E;</span>
+full_img_data <span class="token operator">=</span> browser<span class="token punctuation">.</span>get_screenshot_as_png<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># &#x83B7;&#x53D6;&#x622A;&#x53D6;&#x76EE;&#x6807;&#x7684;&#x5143;&#x7D20;&#x5BF9;&#x8C61;</span>
+room_price_element <span class="token operator">=</span> browser<span class="token punctuation">.</span>find_element_by_id<span class="token punctuation">(</span><span class="token string">&quot;room_price&quot;</span><span class="token punctuation">)</span>
+<span class="token comment"># &#x6784;&#x5EFA;&#x622A;&#x56FE;&#x5750;&#x6807;</span>
+scale <span class="token operator">=</span> <span class="token number">2.0</span>
+x1 <span class="token operator">=</span> room_price_element<span class="token punctuation">.</span>location<span class="token punctuation">[</span><span class="token string">&quot;x&quot;</span><span class="token punctuation">]</span> <span class="token operator">*</span> scale <span class="token operator">+</span> <span class="token number">50</span>
+y1 <span class="token operator">=</span> room_price_element<span class="token punctuation">.</span>location<span class="token punctuation">[</span><span class="token string">&quot;y&quot;</span><span class="token punctuation">]</span> <span class="token operator">*</span> scale
+x2 <span class="token operator">=</span> x1 <span class="token operator">+</span> room_price_element<span class="token punctuation">.</span>size<span class="token punctuation">[</span><span class="token string">&quot;width&quot;</span><span class="token punctuation">]</span> <span class="token operator">*</span> scale <span class="token operator">-</span> <span class="token number">50</span>
+y2 <span class="token operator">=</span> y1 <span class="token operator">+</span> room_price_element<span class="token punctuation">.</span>size<span class="token punctuation">[</span><span class="token string">&quot;height&quot;</span><span class="token punctuation">]</span> <span class="token operator">*</span> scale
+<span class="token comment"># &#x5728;&#x5168;&#x5C4F;&#x56FE;&#x7247;&#x4E2D;&#x6839;&#x636E;&#x622A;&#x56FE;&#x5750;&#x6807;&#x622A;&#x53D6;&#x56FE;&#x7247;</span>
+<span class="token comment"># &#x6784;&#x5EFA;&#x5168;&#x5C4F;&#x56FE;&#x7247;&#x64CD;&#x4F5C;&#x5BF9;&#x8C61;</span>
+full_img <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>BytesIO<span class="token punctuation">(</span>full_img_data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># &#x6839;&#x636E;&#x622A;&#x56FE;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x622A;&#x56FE;</span>
+cut_img <span class="token operator">=</span> full_img<span class="token punctuation">.</span>crop<span class="token punctuation">(</span><span class="token punctuation">(</span>x1<span class="token punctuation">,</span>y1<span class="token punctuation">,</span>x2<span class="token punctuation">,</span>y2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># &#x4FDD;&#x5B58;&#x5230;&#x672C;&#x5730;</span>
+cut_img<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">&apos;02-cut_img.png&apos;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># &#x63D0;&#x4EA4;&#x7ED9;ocr &#x8BC6;&#x522B;</span>
+
+<span class="token comment"># config=&apos;-psm 7&apos;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>pytesseract<span class="token punctuation">.</span>image_to_string<span class="token punctuation">(</span>cut_img<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+browser<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div></div></div></sec>
+<sec data-title="&#x603B;&#x7ED3;" data-id="sectionend" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>&#x603B;&#x7ED3;<a class="pull-right section atTitle btn btn-default" target="sectionend"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="sectionend"><div class="panel-body">
+<ul>
+<li>tesseract &#x662F;&#x4EC0;&#x4E48;<ul>
+<li>&#x56FE;&#x7247;&#x8F6C;&#x6587;&#x5B57;&#x5F00;&#x6E90;&#x5F15;&#x64CE;</li>
+</ul>
+</li>
+<li>tesseract &#x57FA;&#x672C;&#x4F7F;&#x7528;</li>
+</ul>
+</div></div></div></sec></body></html>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../高级技巧/打码平台.html" class="navigation navigation-prev " aria-label="Previous page: 打码平台"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../高级技巧/代理池.html" class="navigation navigation-next " aria-label="Next page: 代理池"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sectionx/sectionx.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ace/ace/ace.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ace/ace.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"expandable-chapters-small":{},"fontsettings":{"theme":"white","family":"sans","size":2},"prism":{"css":["prismjs/themes/prism-solarizedlight.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"],"sectionx":{"tag":"b"},"include-codeblock":{"template":"ace","unindent":true,"theme":"monokai"}},"splitter":{},"mermaid":{},"sectionx":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"ace":{},"emphasize":{},"toggle-chapters":{},"codeblock-filename":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book 爬虫课程 -->
+</html>

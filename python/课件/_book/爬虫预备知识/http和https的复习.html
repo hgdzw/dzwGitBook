@@ -1,0 +1,978 @@
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <!-- Start book 爬虫课程 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>http和https的复习 | 爬虫课程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="zhuwei">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-prism/prism-solarizedlight.css">
+        
+    
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-sectionx/sectionx.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-ace/ace.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-emphasize/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+    
+        <link rel="stylesheet" href="../styles/website.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../网络数据获取/网络数据获取.html" />
+    
+    
+    <link rel="prev" href="../爬虫预备知识/爬虫定义、分类和流程.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="1.2"
+        data-chapter-title="http和https的复习"
+        data-filepath="爬虫预备知识/http和https的复习.md"
+        data-basepath=".."
+        data-revision="Mon Feb 11 2019 22:53:05 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        爬虫课程介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="爬虫预备知识/爬虫预备知识.html">
+            
+                
+                    <a href="../爬虫预备知识/爬虫预备知识.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        爬虫预备知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="爬虫预备知识/爬虫定义、分类和流程.html">
+            
+                
+                    <a href="../爬虫预备知识/爬虫定义、分类和流程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        爬虫定义、分类和流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="爬虫预备知识/http和https的复习.html">
+            
+                
+                    <a href="../爬虫预备知识/http和https的复习.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        http和https的复习
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="网络数据获取/网络数据获取.html">
+            
+                
+                    <a href="../网络数据获取/网络数据获取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        网络数据获取
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="网络数据获取/请求分析流程.html">
+            
+                
+                    <a href="../网络数据获取/请求分析流程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        请求分析流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="网络数据获取/requests模块介绍与使用.html">
+            
+                
+                    <a href="../网络数据获取/requests模块介绍与使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        requests 模块
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="数据提取/数据提取.html">
+            
+                
+                    <a href="../数据提取/数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        数据提取
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="数据提取/数据提取概念和数据的分类.html">
+            
+                
+                    <a href="../数据提取/数据提取概念和数据的分类.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        数据提取概念和数据的分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="数据提取/JSON数据提取.html">
+            
+                
+                    <a href="../数据提取/JSON数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        JSON 与 jsonpath 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="数据提取/使用正则表达式提取数据.html">
+            
+                
+                    <a href="../数据提取/使用正则表达式提取数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        正则表达式 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="数据提取/xpath数据提取.html">
+            
+                
+                    <a href="../数据提取/xpath数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        html/xml 与 xpath 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="数据提取/bs4数据提取.html">
+            
+                
+                    <a href="../数据提取/bs4数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        beautifulsoup 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="数据提取/csv数据转换.html">
+            
+                
+                    <a href="../数据提取/csv数据转换.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        json、csv 数据转换
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="高级技巧/高级技巧.html">
+            
+                
+                    <a href="../高级技巧/高级技巧.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        高级技巧
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="高级技巧/高性能爬虫.html">
+            
+                
+                    <a href="../高级技巧/高性能爬虫.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        高性能爬虫
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="高级技巧/selenium.html">
+            
+                
+                    <a href="../高级技巧/selenium.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        selenium
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="高级技巧/打码平台.html">
+            
+                
+                    <a href="../高级技巧/打码平台.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        打码平台
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="高级技巧/tesseract.html">
+            
+                
+                    <a href="../高级技巧/tesseract.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        tesseract OCR识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="高级技巧/代理池.html">
+            
+                
+                    <a href="../高级技巧/代理池.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        代理池
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="高级技巧/常见反扒手段.html">
+            
+                
+                    <a href="../高级技巧/常见反扒手段.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        常见反扒手段
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="数据保存/数据保存.html">
+            
+                
+                    <a href="../数据保存/数据保存.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        数据保存
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="数据保存/mongodb.html">
+            
+                
+                    <a href="../数据保存/mongodb.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        mongodb
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="scrapy框架/scrapy框架.html">
+            
+                
+                    <a href="../scrapy框架/scrapy框架.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        scrapy框架
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="scrapy框架/scrapy基本使用.html">
+            
+                
+                    <a href="../scrapy框架/scrapy基本使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        scrapy 基本使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="scrapy框架/scrapy高级使用.html">
+            
+                
+                    <a href="../scrapy框架/scrapy高级使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        scrapy 高级使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="scrapy框架/scrapy项目部署.html">
+            
+                
+                    <a href="../scrapy框架/scrapy项目部署.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        scrapy 项目部署
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="scrapy框架/scrapy redis使用.html">
+            
+                
+                    <a href="../scrapy框架/scrapy redis使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        scrapy redis使用
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="附录/附录.html">
+            
+                
+                    <a href="../附录/附录.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        附录
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="附录/HTTP请求列表.html">
+            
+                
+                    <a href="../附录/HTTP请求列表.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        HTTP请求列表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="附录/HTTP响应列表.html">
+            
+                
+                    <a href="../附录/HTTP响应列表.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        HTTP响应列表
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本书使用 GitBook 发布
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >爬虫课程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <html><head></head><body><h1 id="http-&#x4E0E;-https-&#x590D;&#x4E60;">HTTP &#x4E0E; HTTPS &#x590D;&#x4E60;</h1>
+<sec data-title="&#x5B66;&#x4E60;&#x76EE;&#x6807;" data-id="section0" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>&#x5B66;&#x4E60;&#x76EE;&#x6807;<a class="pull-right section atTitle btn btn-default" target="section0"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section0"><div class="panel-body">
+<ul>
+<li>&#x4E86;&#x89E3; HTTP &#x7684;&#x6982;&#x5FF5;</li>
+<li>&#x638C;&#x63E1; HTTP &#x8BF7;&#x6C42;&#x8FC7;&#x7A0B;</li>
+<li>&#x638C;&#x63E1; HTTP &#x8BF7;&#x6C42;&#x683C;&#x5F0F;</li>
+<li>&#x638C;&#x63E1; HTTP &#x54CD;&#x5E94;&#x683C;&#x5F0F;</li>
+<li>&#x638C;&#x63E1; HTTP &#x5E38;&#x89C1;&#x5934;</li>
+<li>&#x638C;&#x63E1; HTTP &#x5E38;&#x89C1;&#x54CD;&#x5E94;&#x72B6;&#x6001;&#x7801;</li>
+</ul>
+</div></div></div></sec>
+<sec data-title="HTTP &#x4E0E; HTTPS &#x7684;&#x6982;&#x5FF5;" data-id="section1" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>HTTP &#x4E0E; HTTPS &#x7684;&#x6982;&#x5FF5;<a class="pull-right section atTitle btn btn-default" target="section1"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section1"><div class="panel-body">
+<ul>
+<li>HTTP<ul>
+<li>&#x8D85;&#x6587;&#x672C;&#x4F20;&#x8F93;&#x534F;&#x8BAE;</li>
+<li>&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;&#x53F7;:80</li>
+</ul>
+</li>
+<li>HTTPS<ul>
+<li>HTTP + SSL(&#x5B89;&#x5168;&#x5957;&#x63A5;&#x5B57;&#x5C42;)&#xFF0C;&#x5373;&#x5E26;&#x6709;&#x5B89;&#x5168;&#x5957;&#x63A5;&#x5B57;&#x5C42;&#x7684;&#x8D85;&#x672C;&#x6587;&#x4F20;&#x8F93;&#x534F;&#x8BAE;</li>
+<li>&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;&#x53F7;&#xFF1A;443</li>
+</ul>
+</li>
+</ul>
+</div></div></div></sec>
+<sec data-title="HTTP &#x534F;&#x8BAE;" data-id="section2" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>HTTP &#x534F;&#x8BAE;<a class="pull-right section atTitle btn btn-default" target="section2"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section2"><div class="panel-body">
+<h3 id="&#x4E00;&#x3001;-http-&#x8BF7;&#x6C42;&#x6D41;&#x7A0B;">&#x4E00;&#x3001; HTTP &#x8BF7;&#x6C42;&#x6D41;&#x7A0B;</h3>
+<p><img src="../images/http&#x53D1;&#x9001;&#x7684;&#x8FC7;&#x7A0B;.png"></p>
+<ol>
+<li>&#x6D4F;&#x89C8;&#x5668;&#x901A;&#x8FC7;&#x57DF;&#x540D;&#x89E3;&#x6790;&#x670D;&#x52A1;&#x5668;&#xFF08;DNS&#xFF09;&#x83B7;&#x53D6;IP&#x5730;&#x5740;</li>
+<li>&#x6D4F;&#x89C8;&#x5668;&#x5148;&#x5411;IP&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x83B7;&#x53D6;&#x76F8;&#x5E94;</li>
+<li>&#x5728;&#x8FD4;&#x56DE;&#x7684;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#xFF08;html&#xFF09;&#x4E2D;&#xFF0C;&#x4F1A;&#x5E26;&#x6709;css&#x3001;js&#x3001;&#x56FE;&#x7247;&#x7B49;url&#x5730;&#x5740;&#xFF0C;&#x4EE5;&#x53CA;ajax&#x4EE3;&#x7801;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x6309;&#x7167;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x4E2D;&#x7684;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x53D1;&#x9001;&#x5176;&#x4ED6;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x83B7;&#x53D6;&#x76F8;&#x5E94;&#x7684;&#x54CD;&#x5E94;</li>
+<li>&#x6D4F;&#x89C8;&#x5668;&#x6BCF;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x54CD;&#x5E94;&#x5C31;&#x5BF9;&#x5C55;&#x793A;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x6DFB;&#x52A0;&#xFF08;&#x52A0;&#x8F7D;&#xFF09;&#xFF0C;js&#xFF0C;css&#x7B49;&#x5185;&#x5BB9;&#x4F1A;&#x4FEE;&#x6539;&#x9875;&#x9762;&#x7684;&#x5185;&#x5BB9;&#xFF0C;js&#x4E5F;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#xFF0C;&#x83B7;&#x53D6;&#x54CD;&#x5E94;</li>
+<li>&#x4ECE;&#x83B7;&#x53D6;&#x7B2C;&#x4E00;&#x4E2A;&#x54CD;&#x5E94;&#x5E76;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x5C55;&#x793A;&#xFF0C;&#x76F4;&#x5230;&#x6700;&#x7EC8;&#x83B7;&#x53D6;&#x5168;&#x90E8;&#x54CD;&#x5E94;&#xFF0C;&#x5E76;&#x5728;&#x5C55;&#x793A;&#x7684;&#x7ED3;&#x679C;&#x4E2D;&#x6DFB;&#x52A0;&#x5185;&#x5BB9;&#x6216;&#x4FEE;&#x6539;&#x2014;&#x2014;&#x2014;&#x2014;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x53EB;&#x505A;&#x6D4F;&#x89C8;&#x5668;&#x7684;<strong>&#x6E32;&#x67D3;</strong></li>
+</ol>
+<h3 id="&#x4E8C;&#x3001;-url-&#x5730;&#x5740;&#x683C;&#x5F0F;">&#x4E8C;&#x3001; URL &#x5730;&#x5740;&#x683C;&#x5F0F;</h3>
+<p><img src="../images/http&#x7684;url&#x89C4;&#x5219;.jpg" alt="http&#x7684;url&#x89C4;&#x5219;"></p>
+<h5 id="&#x683C;&#x5F0F;&#x8BF4;&#x660E;">&#x683C;&#x5F0F;&#x8BF4;&#x660E;:</h5>
+<pre><code class="lang-js">scheme<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>host<span class="token punctuation">[</span><span class="token punctuation">:</span>port<span class="token punctuation">]</span><span class="token operator">/</span>path<span class="token operator">/</span>&#x2026;<span class="token operator">/</span><span class="token punctuation">[</span><span class="token operator">?</span>query<span class="token operator">-</span>string<span class="token punctuation">]</span><span class="token punctuation">[</span>#anchor<span class="token punctuation">]</span>
+</code></pre>
+<ul>
+<li><strong>scheme</strong>&#xFF1A;&#x534F;&#x8BAE;&#xFF08;&#x4F8B;&#x5982;&#xFF1A;http, https, ftp&#xFF09;</li>
+<li><strong>host</strong>&#xFF1A;&#x670D;&#x52A1;&#x5668;&#x7684;IP&#x5730;&#x5740;&#x6216;&#x8005;&#x57DF;&#x540D;</li>
+<li><strong>port</strong>&#xFF1A;&#x670D;&#x52A1;&#x5668;&#x7684;&#x7AEF;&#x53E3;&#xFF08;&#x5982;&#x679C;&#x662F;&#x8D70;&#x534F;&#x8BAE;&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;&#xFF0C;&#x7F3A;&#x7701;&#x7AEF;&#x53E3;80&#xFF09;</li>
+<li><strong>path</strong>&#xFF1A;&#x8BBF;&#x95EE;&#x8D44;&#x6E90;&#x7684;&#x8DEF;&#x5F84;</li>
+<li><strong>query-string</strong>&#xFF1A;&#x53C2;&#x6570;&#xFF0C;&#x53D1;&#x9001;&#x7ED9;http&#x670D;&#x52A1;&#x5668;&#x7684;&#x6570;&#x636E;</li>
+<li><strong>anchor</strong>&#xFF1A;&#x951A;&#xFF08;&#x8DF3;&#x8F6C;&#x5230;&#x7F51;&#x9875;&#x7684;&#x6307;&#x5B9A;&#x951A;&#x70B9;&#x4F4D;&#x7F6E;&#xFF09;</li>
+</ul>
+<h3 id="&#x4E09;&#x3001;-http-&#x8BF7;&#x6C42;">&#x4E09;&#x3001; HTTP &#x8BF7;&#x6C42;</h3>
+<h5 id="&#x8BF7;&#x6C42;&#x683C;&#x5F0F;">&#x8BF7;&#x6C42;&#x683C;&#x5F0F;</h5>
+<p><img src="../images/&#x8BF7;&#x6C42;&#x534F;&#x8BAE;&#x683C;&#x5F0F;.png" alt="&#x8BF7;&#x6C42;&#x534F;&#x8BAE;&#x683C;&#x5F0F;"></p>
+<h5 id="&#x6848;&#x4F8B;">&#x6848;&#x4F8B;</h5>
+<p><img src="../images/&#x8BF7;&#x6C42;&#x534F;&#x8BAE;&#x6848;&#x4F8B;.jpg" alt="&#x8BF7;&#x6C42;&#x534F;&#x8BAE;&#x6848;&#x4F8B;"></p>
+<h5 id="&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;">&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</h5>
+<blockquote>
+<p>&#x6839;&#x636E;HTTP&#x6807;&#x51C6;&#xFF0C;HTTP&#x8BF7;&#x6C42;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x79CD;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>HTTP1.0&#x5B9A;&#x4E49;&#x4E86;&#x4E09;&#x79CD;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A; GET, POST &#x548C; HEAD&#x65B9;&#x6CD5;&#x3002;</p>
+<p>HTTP1.1&#x65B0;&#x589E;&#x4E86;&#x4E94;&#x79CD;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;OPTIONS, PUT, DELETE, TRACE &#x548C; CONNECT &#x65B9;&#x6CD5;&#x3002;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0; </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">GET</td>
+<td style="text-align:left">&#x8BF7;&#x6C42;&#x6307;&#x5B9A;&#x7684;&#x9875;&#x9762;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x5B9E;&#x4F53;&#x4E3B;&#x4F53;&#x3002; </td>
+</tr>
+<tr>
+<td style="text-align:center">HEAD</td>
+<td style="text-align:left">&#x7C7B;&#x4F3C;&#x4E8E;get&#x8BF7;&#x6C42;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x8FD4;&#x56DE;&#x7684;&#x54CD;&#x5E94;&#x4E2D;&#x6CA1;&#x6709;&#x5177;&#x4F53;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x7528;&#x4E8E;&#x83B7;&#x53D6;&#x62A5;&#x5934; </td>
+</tr>
+<tr>
+<td style="text-align:center">POST</td>
+<td style="text-align:left">&#x5411;&#x6307;&#x5B9A;&#x8D44;&#x6E90;&#x63D0;&#x4EA4;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#xFF08;&#x4F8B;&#x5982;&#x63D0;&#x4EA4;&#x8868;&#x5355;&#x6216;&#x8005;&#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#xFF09;&#x3002;&#x6570;&#x636E;&#x88AB;&#x5305;&#x542B;&#x5728;&#x8BF7;&#x6C42;&#x4F53;&#x4E2D;&#x3002;POST&#x8BF7;&#x6C42;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x65B0;&#x7684;&#x8D44;&#x6E90;&#x7684;&#x5EFA;&#x7ACB;&#x548C;/&#x6216;&#x5DF2;&#x6709;&#x8D44;&#x6E90;&#x7684;&#x4FEE;&#x6539;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:center">PUT</td>
+<td style="text-align:left">&#x4ECE;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x670D;&#x52A1;&#x5668;&#x4F20;&#x9001;&#x7684;&#x6570;&#x636E;&#x53D6;&#x4EE3;&#x6307;&#x5B9A;&#x7684;&#x6587;&#x6863;&#x7684;&#x5185;&#x5BB9;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:center">DELETE</td>
+<td style="text-align:left">&#x8BF7;&#x6C42;&#x670D;&#x52A1;&#x5668;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x7684;&#x9875;&#x9762;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:center">CONNECT</td>
+<td style="text-align:left">HTTP/1.1&#x534F;&#x8BAE;&#x4E2D;&#x9884;&#x7559;&#x7ED9;&#x80FD;&#x591F;&#x5C06;&#x8FDE;&#x63A5;&#x6539;&#x4E3A;&#x7BA1;&#x9053;&#x65B9;&#x5F0F;&#x7684;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:center">OPTIONS</td>
+<td style="text-align:left">&#x5141;&#x8BB8;&#x5BA2;&#x6237;&#x7AEF;&#x67E5;&#x770B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6027;&#x80FD;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:center">TRACE</td>
+<td style="text-align:left">&#x56DE;&#x663E;&#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x6216;&#x8BCA;&#x65AD;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x5E38;&#x89C1;&#x8BF7;&#x6C42;&#x5934;">&#x5E38;&#x89C1;&#x8BF7;&#x6C42;&#x5934;</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8BF7;&#x6C42;&#x5934;</th>
+<th style="text-align:left">&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Cookie</strong></td>
+<td style="text-align:left">Cookie</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>User-Agent</strong></td>
+<td style="text-align:left">&#x6D4F;&#x89C8;&#x5668;&#x540D;&#x79F0;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Referer</strong></td>
+<td style="text-align:left">&#x9875;&#x9762;&#x8DF3;&#x8F6C;&#x5904;</td>
+</tr>
+<tr>
+<td style="text-align:left">Host</td>
+<td style="text-align:left">&#x4E3B;&#x673A;&#x548C;&#x7AEF;&#x53E3;&#x53F7;</td>
+</tr>
+<tr>
+<td style="text-align:left">Connection</td>
+<td style="text-align:left">&#x94FE;&#x63A5;&#x7C7B;&#x578B;</td>
+</tr>
+<tr>
+<td style="text-align:left">Upgrade-Insecure-Requests</td>
+<td style="text-align:left">&#x5347;&#x7EA7;&#x4E3A; <code>HTTPS</code> &#x8BF7;&#x6C42;</td>
+</tr>
+<tr>
+<td style="text-align:left">Accept</td>
+<td style="text-align:left">&#x4F20;&#x8F93;&#x6587;&#x4EF6;&#x7C7B;&#x578B;</td>
+</tr>
+<tr>
+<td style="text-align:left">Accept-Encoding</td>
+<td style="text-align:left">&#x6587;&#x4EF6;&#x7F16;&#x89E3;&#x7801;&#x683C;&#x5F0F;</td>
+</tr>
+<tr>
+<td style="text-align:left">x-requested-with : XMLHttpRequest</td>
+<td style="text-align:left">ajax &#x8BF7;&#x6C42;</td>
+</tr>
+</tbody>
+</table>
+<p><a href="../&#x9644;&#x5F55;/HTTP&#x8BF7;&#x6C42;&#x5217;&#x8868;.html">&#x70B9;&#x51FB;&#x66F4;&#x591A;</a></p>
+<h3 id="&#x56DB;&#x3001;-http-&#x54CD;&#x5E94;">&#x56DB;&#x3001; HTTP &#x54CD;&#x5E94;</h3>
+<h4 id="&#x54CD;&#x5E94;&#x683C;&#x5F0F;">&#x54CD;&#x5E94;&#x683C;&#x5F0F;</h4>
+<blockquote>
+<p>HTTP&#x54CD;&#x5E94;&#x4E5F;&#x7531;<strong>&#x56DB;</strong>&#x4E2A;&#x90E8;&#x5206;&#x7EC4;&#x6210;&#xFF0C;&#x5206;&#x522B;&#x662F;&#xFF1A;<strong>&#x72B6;&#x6001;&#x884C;</strong>&#x3001;<strong>&#x6D88;&#x606F;&#x62A5;&#x5934;</strong>&#x3001;<strong>&#x7A7A;&#x884C;&#xFF08;&#x56DE;&#x8F66;&#x7B26; + &#x6362;&#x884C;&#x7B26;&#xFF09;</strong>&#x548C;<strong>&#x54CD;&#x5E94;&#x6B63;&#x6587;</strong>&#x3002;</p>
+</blockquote>
+<p><img src="../images/&#x54CD;&#x5E94;&#x683C;&#x5F0F;.jpg" alt="&#x54CD;&#x5E94;&#x683C;&#x5F0F;"></p>
+<h4 id="&#x54CD;&#x5E94;&#x5934;">&#x54CD;&#x5E94;&#x5934;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8BF7;&#x6C42;&#x5934;</th>
+<th style="text-align:left">&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Location</strong></td>
+<td style="text-align:left">&#x8FD9;&#x4E2A;&#x5934;&#x914D;&#x5408;302&#x72B6;&#x6001;&#x7801;&#x4F7F;&#x7528;&#xFF0C;&#x544A;&#x8BC9;&#x7528;&#x6237;&#x7AEF;&#x627E;&#x8C01;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Set-Cookie</strong></td>
+<td style="text-align:left">&#x8BBE;&#x7F6E;&#x548C;&#x9875;&#x9762;&#x5173;&#x8054;&#x7684;Cookie</td>
+</tr>
+<tr>
+<td style="text-align:left">Content-Type</td>
+<td style="text-align:left">&#x670D;&#x52A1;&#x5668;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5934;&#xFF0C;&#x56DE;&#x9001;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;</td>
+</tr>
+<tr>
+<td style="text-align:left">Server</td>
+<td style="text-align:left">&#x670D;&#x52A1;&#x5668;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5934;&#xFF0C;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;&#x670D;&#x52A1;&#x5668;&#x7684;&#x7C7B;&#x578B;</td>
+</tr>
+<tr>
+<td style="text-align:left">Content-Length</td>
+<td style="text-align:left">&#x670D;&#x52A1;&#x5668;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5934;&#xFF0C;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;&#x56DE;&#x9001;&#x6570;&#x636E;&#x7684;&#x957F;&#x5EA6;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left">Connection</td>
+<td style="text-align:left">&#x670D;&#x52A1;&#x5668;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5934;&#xFF0C;&#x54CD;&#x5E94;&#x5B8C;&#x662F;&#x4FDD;&#x6301;&#x94FE;&#x63A5;&#x8FD8;&#x662F;&#x5173;&#x95ED;&#x94FE;&#x63A5;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="http-&#x72B6;&#x6001;&#x7801;">HTTP &#x72B6;&#x6001;&#x7801;</h4>
+<blockquote>
+<p>&#x5F53;&#x6D4F;&#x89C8;&#x8005;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x7F51;&#x9875;&#x65F6;&#xFF0C;&#x6D4F;&#x89C8;&#x8005;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x5411;&#x7F51;&#x9875;&#x6240;&#x5728;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x51FA;&#x8BF7;&#x6C42;&#x3002;&#x5F53;&#x6D4F;&#x89C8;&#x5668;&#x63A5;&#x6536;&#x5E76;&#x663E;&#x793A;&#x7F51;&#x9875;&#x524D;&#xFF0C;&#x6B64;&#x7F51;&#x9875;&#x6240;&#x5728;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5305;&#x542B;HTTP&#x72B6;&#x6001;&#x7801;&#x7684;&#x4FE1;&#x606F;&#x5934;&#xFF08;server header&#xFF09;&#x7528;&#x4EE5;&#x54CD;&#x5E94;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x8BF7;&#x6C42;&#x3002;</p>
+<p>HTTP&#x72B6;&#x6001;&#x7801;&#x7684;&#x82F1;&#x6587;&#x4E3A;HTTP Status Code&#x3002;</p>
+<p>HTTP &#x72B6;&#x6001;&#x7801;&#x7531;&#x4E09;&#x4E2A;&#x5341;&#x8FDB;&#x5236;&#x6570;&#x5B57;&#x7EC4;&#x6210;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x5341;&#x8FDB;&#x5236;&#x6570;&#x5B57;&#x5B9A;&#x4E49;&#x4E86;&#x72B6;&#x6001;&#x7801;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x540E;&#x4E24;&#x4E2A;&#x6570;&#x5B57;&#x6CA1;&#x6709;&#x5206;&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x3002;HTTP &#x72B6;&#x6001;&#x7801;&#x5171;&#x5206;&#x4E3A;5&#x79CD;&#x7C7B;&#x578B;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x5206;&#x7C7B;</th>
+<th style="text-align:left">&#x5206;&#x7C7B;&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1**</td>
+<td style="text-align:left">&#x4FE1;&#x606F;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#xFF0C;&#x9700;&#x8981;&#x8BF7;&#x6C42;&#x8005;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x64CD;&#x4F5C;</td>
+</tr>
+<tr>
+<td style="text-align:center">2**</td>
+<td style="text-align:left">&#x6210;&#x529F;&#xFF0C;&#x64CD;&#x4F5C;&#x88AB;&#x6210;&#x529F;&#x63A5;&#x6536;&#x5E76;&#x5904;&#x7406;</td>
+</tr>
+<tr>
+<td style="text-align:center">3**</td>
+<td style="text-align:left">&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x64CD;&#x4F5C;&#x4EE5;&#x5B8C;&#x6210;&#x8BF7;&#x6C42;</td>
+</tr>
+<tr>
+<td style="text-align:center">4**</td>
+<td style="text-align:left">&#x5BA2;&#x6237;&#x7AEF;&#x9519;&#x8BEF;&#xFF0C;&#x8BF7;&#x6C42;&#x5305;&#x542B;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#x6216;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x8BF7;&#x6C42;</td>
+</tr>
+<tr>
+<td style="text-align:center">5**</td>
+<td style="text-align:left">&#x670D;&#x52A1;&#x5668;&#x9519;&#x8BEF;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x5728;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x751F;&#x4E86;&#x9519;&#x8BEF;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x5E38;&#x89C1;&#x7684;HTTP&#x72B6;&#x6001;&#x7801;&#xFF1A;<ul>
+<li>200 - &#x8BF7;&#x6C42;&#x6210;&#x529F;</li>
+<li>301 - &#x8D44;&#x6E90;&#xFF08;&#x7F51;&#x9875;&#x7B49;&#xFF09;&#x88AB;&#x6C38;&#x4E45;&#x8F6C;&#x79FB;&#x5230;&#x5176;&#x5B83;URL</li>
+<li>404 - &#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;&#xFF08;&#x7F51;&#x9875;&#x7B49;&#xFF09;&#x4E0D;&#x5B58;&#x5728;</li>
+<li>500 - &#x5185;&#x90E8;&#x670D;&#x52A1;&#x5668;&#x9519;&#x8BEF;</li>
+</ul>
+</li>
+</ul>
+<p><a href="../&#x9644;&#x5F55;/&#x54CD;&#x5E94;&#x72B6;&#x6001;&#x7801;.html">&#x70B9;&#x51FB;&#x66F4;&#x591A;</a></p>
+</div></div></div></sec>
+<sec data-title="HTTPS" data-id="section3" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>HTTPS<a class="pull-right section atTitle btn btn-default" target="section3"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section3"><div class="panel-body">
+<h3 id="https-&#x4F5C;&#x7528;">HTTPS &#x4F5C;&#x7528;</h3>
+<blockquote>
+<p>&#x5728; <strong>&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x4E2D;</strong> &#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#xFF0C;&#x9632;&#x6B62;&#x4E2D;&#x95F4;&#x8DEF;&#x7531;&#x5668;&#x3001;&#x4EA4;&#x6362;&#x673A;&#x7B49;&#x4E2D;&#x95F4;&#x7684;&#x8DEF;&#x7531;&#x8BBE;&#x5907;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x7BE1;&#x6539;&#x3002;</p>
+</blockquote>
+<h3 id="http-&#x4E0E;-https-&#x4F18;&#x7F3A;&#x70B9;">HTTP &#x4E0E; HTTPS &#x4F18;&#x7F3A;&#x70B9;</h3>
+<blockquote>
+<p>HTTP &#x56E0;&#x4E3A;&#x4E0D;&#x9700;&#x8981;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#x6240;&#x4EE5;&#x6027;&#x80FD;&#x66F4;&#x9AD8;&#xFF0C;&#x4F46;&#x662F;&#x5B89;&#x5168;&#x6027;&#x5DEE;&#x3002;</p>
+<p>HTTPS &#x867D;&#x7136;&#x5B89;&#x5168;&#x6027;&#x9AD8;&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x6D4F;&#x89C8;&#x5668;&#x548C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x9700;&#x8981;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x89E3;&#x5BC6;&#xFF0C;&#x6240;&#x4EE5;&#x5360;&#x7528;&#x670D;&#x52A1;&#x5668;&#x8D44;&#x6E90;&#x3002;</p>
+</blockquote>
+<h3 id="&#x5F53;&#x524D;&#x5F62;&#x5F0F;">&#x5F53;&#x524D;&#x5F62;&#x5F0F;</h3>
+<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x76EE;&#x524D;<code>HTTPS</code>&#x662F;&#x672A;&#x6765;&#x4E3B;&#x6D41;&#xFF0C;<strong>&#x5FAE;&#x4FE1;&#x5C0F;&#x7A0B;&#x5E8F;</strong>&#xFF0C;<strong>iOS&#x5BA2;&#x6237;&#x7AEF;</strong>&#xFF0C;<strong>android&#x5BA2;&#x6237;&#x7AEF;</strong> &#x7684;&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x90FD;&#x9700;&#x8981; <code>HTTPS</code> &#x63A5;&#x53E3;&#x652F;&#x6301;&#x3002;</p>
+</div></div></div></sec>
+<sec data-title="&#x603B;&#x7ED3;" data-id="sectionend" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>&#x603B;&#x7ED3;<a class="pull-right section atTitle btn btn-default" target="sectionend"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="sectionend"><div class="panel-body">
+<ul>
+<li>&#x4E86;&#x89E3; HTTP &#x7684;&#x6982;&#x5FF5;<ul>
+<li>&#x8D85;&#x6587;&#x672C;&#x4F20;&#x8F93;&#x534F;&#x8BAE;</li>
+</ul>
+</li>
+<li>&#x638C;&#x63E1; HTTP &#x8BF7;&#x6C42;&#x8FC7;&#x7A0B;<ul>
+<li><code>&#x57DF;&#x540D;</code> =&gt; <code>DNS</code> =&gt; <code>IP</code> =&gt; <code>&#x5185;&#x5BB9;</code></li>
+</ul>
+</li>
+<li>&#x638C;&#x63E1; HTTP &#x8BF7;&#x6C42;&#x683C;&#x5F0F;</li>
+<li>&#x638C;&#x63E1; HTTP &#x54CD;&#x5E94;&#x683C;&#x5F0F;</li>
+<li>&#x638C;&#x63E1; HTTP &#x5E38;&#x89C1;&#x5934;<ul>
+<li>User-Agent</li>
+<li>Referer</li>
+<li>Cookies</li>
+</ul>
+</li>
+<li>&#x638C;&#x63E1; HTTP &#x5E38;&#x89C1;&#x54CD;&#x5E94;&#x72B6;&#x6001;&#x7801;<ul>
+<li>200</li>
+<li>404</li>
+<li>500</li>
+</ul>
+</li>
+</ul>
+</div></div></div></sec></body></html>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../爬虫预备知识/爬虫定义、分类和流程.html" class="navigation navigation-prev " aria-label="Previous page: 爬虫定义、分类和流程"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../网络数据获取/网络数据获取.html" class="navigation navigation-next " aria-label="Next page: 网络数据获取"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sectionx/sectionx.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ace/ace/ace.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ace/ace.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"expandable-chapters-small":{},"fontsettings":{"theme":"white","family":"sans","size":2},"prism":{"css":["prismjs/themes/prism-solarizedlight.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"],"sectionx":{"tag":"b"},"include-codeblock":{"template":"ace","unindent":true,"theme":"monokai"}},"splitter":{},"mermaid":{},"sectionx":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"ace":{},"emphasize":{},"toggle-chapters":{},"codeblock-filename":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book 爬虫课程 -->
+</html>

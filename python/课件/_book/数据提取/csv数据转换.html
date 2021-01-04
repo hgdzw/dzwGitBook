@@ -1,0 +1,770 @@
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <!-- Start book 爬虫课程 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>json、csv 数据转换 | 爬虫课程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="zhuwei">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-prism/prism-solarizedlight.css">
+        
+    
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-sectionx/sectionx.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-ace/ace.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-emphasize/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-codeblock-filename/block.css">
+        
+    
+    
+        <link rel="stylesheet" href="../styles/website.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../高级技巧/高级技巧.html" />
+    
+    
+    <link rel="prev" href="../数据提取/bs4数据提取.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="3.6"
+        data-chapter-title="json、csv 数据转换"
+        data-filepath="数据提取/csv数据转换.md"
+        data-basepath=".."
+        data-revision="Mon Feb 11 2019 22:53:05 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        爬虫课程介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="爬虫预备知识/爬虫预备知识.html">
+            
+                
+                    <a href="../爬虫预备知识/爬虫预备知识.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        爬虫预备知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="爬虫预备知识/爬虫定义、分类和流程.html">
+            
+                
+                    <a href="../爬虫预备知识/爬虫定义、分类和流程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        爬虫定义、分类和流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="爬虫预备知识/http和https的复习.html">
+            
+                
+                    <a href="../爬虫预备知识/http和https的复习.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        http和https的复习
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="网络数据获取/网络数据获取.html">
+            
+                
+                    <a href="../网络数据获取/网络数据获取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        网络数据获取
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="网络数据获取/请求分析流程.html">
+            
+                
+                    <a href="../网络数据获取/请求分析流程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        请求分析流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="网络数据获取/requests模块介绍与使用.html">
+            
+                
+                    <a href="../网络数据获取/requests模块介绍与使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        requests 模块
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="数据提取/数据提取.html">
+            
+                
+                    <a href="../数据提取/数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        数据提取
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="数据提取/数据提取概念和数据的分类.html">
+            
+                
+                    <a href="../数据提取/数据提取概念和数据的分类.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        数据提取概念和数据的分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="数据提取/JSON数据提取.html">
+            
+                
+                    <a href="../数据提取/JSON数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        JSON 与 jsonpath 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="数据提取/使用正则表达式提取数据.html">
+            
+                
+                    <a href="../数据提取/使用正则表达式提取数据.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        正则表达式 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="数据提取/xpath数据提取.html">
+            
+                
+                    <a href="../数据提取/xpath数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        html/xml 与 xpath 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="数据提取/bs4数据提取.html">
+            
+                
+                    <a href="../数据提取/bs4数据提取.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        beautifulsoup 数据提取
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.6" data-path="数据提取/csv数据转换.html">
+            
+                
+                    <a href="../数据提取/csv数据转换.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        json、csv 数据转换
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="高级技巧/高级技巧.html">
+            
+                
+                    <a href="../高级技巧/高级技巧.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        高级技巧
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="高级技巧/高性能爬虫.html">
+            
+                
+                    <a href="../高级技巧/高性能爬虫.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        高性能爬虫
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="高级技巧/selenium.html">
+            
+                
+                    <a href="../高级技巧/selenium.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        selenium
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="高级技巧/打码平台.html">
+            
+                
+                    <a href="../高级技巧/打码平台.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        打码平台
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="高级技巧/tesseract.html">
+            
+                
+                    <a href="../高级技巧/tesseract.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        tesseract OCR识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="高级技巧/代理池.html">
+            
+                
+                    <a href="../高级技巧/代理池.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        代理池
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="高级技巧/常见反扒手段.html">
+            
+                
+                    <a href="../高级技巧/常见反扒手段.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        常见反扒手段
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="数据保存/数据保存.html">
+            
+                
+                    <a href="../数据保存/数据保存.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        数据保存
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="数据保存/mongodb.html">
+            
+                
+                    <a href="../数据保存/mongodb.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        mongodb
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="scrapy框架/scrapy框架.html">
+            
+                
+                    <a href="../scrapy框架/scrapy框架.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        scrapy框架
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="scrapy框架/scrapy基本使用.html">
+            
+                
+                    <a href="../scrapy框架/scrapy基本使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        scrapy 基本使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="scrapy框架/scrapy高级使用.html">
+            
+                
+                    <a href="../scrapy框架/scrapy高级使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        scrapy 高级使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="scrapy框架/scrapy项目部署.html">
+            
+                
+                    <a href="../scrapy框架/scrapy项目部署.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        scrapy 项目部署
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="scrapy框架/scrapy redis使用.html">
+            
+                
+                    <a href="../scrapy框架/scrapy redis使用.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        scrapy redis使用
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="附录/附录.html">
+            
+                
+                    <a href="../附录/附录.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        附录
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="附录/HTTP请求列表.html">
+            
+                
+                    <a href="../附录/HTTP请求列表.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        HTTP请求列表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="附录/HTTP响应列表.html">
+            
+                
+                    <a href="../附录/HTTP响应列表.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        HTTP响应列表
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本书使用 GitBook 发布
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >爬虫课程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <html><head></head><body><h1 id="json-&#x4E0E;-csv-&#x6587;&#x4EF6;&#x8F6C;&#x6362;">json &#x4E0E; csv &#x6587;&#x4EF6;&#x8F6C;&#x6362;</h1>
+<sec data-title="&#x5B66;&#x4E60;&#x76EE;&#x6807;" data-id="section0" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>&#x5B66;&#x4E60;&#x76EE;&#x6807;<a class="pull-right section atTitle btn btn-default" target="section0"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section0"><div class="panel-body">
+<ul>
+<li><strong>&#x3010;&#x4E86;&#x89E3;&#x3011;</strong> csv &#x6587;&#x4EF6;&#x683C;&#x5F0F;</li>
+<li><strong>&#x3010;&#x4E86;&#x89E3;&#x3011;</strong> csv &#x57FA;&#x672C;&#x4F7F;&#x7528;</li>
+</ul>
+</div></div></div></sec>
+<sec data-title="csv &#x6587;&#x4EF6;&#x683C;&#x5F0F;" data-id="section01" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>csv &#x6587;&#x4EF6;&#x683C;&#x5F0F;<a class="pull-right section atTitle btn btn-default" target="section01"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="section01"><div class="panel-body">
+<h4 id="&#x5B9A;&#x4E49;">&#x5B9A;&#x4E49;</h4>
+<blockquote>
+<p>&#x9017;&#x53F7;&#x5206;&#x9694;&#x503C;&#xFF08;Comma-Separated Values&#xFF0C;CSV&#xFF0C;&#x6709;&#x65F6;&#x4E5F;&#x79F0;&#x4E3A;&#x5B57;&#x7B26;&#x5206;&#x9694;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x5206;&#x9694;&#x5B57;&#x7B26;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x662F;&#x9017;&#x53F7;&#xFF09;&#xFF0C;&#x5176;&#x6587;&#x4EF6;&#x4EE5;&#x7EAF;&#x6587;&#x672C;&#x5F62;&#x5F0F;&#x5B58;&#x50A8;&#x8868;&#x683C;&#x6570;&#x636E;&#xFF08;&#x6570;&#x5B57;&#x548C;&#x6587;&#x672C;&#xFF09;&#x3002;</p>
+</blockquote>
+<h4 id="&#x4F5C;&#x7528;">&#x4F5C;&#x7528;</h4>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; excel &#x8F6C;&#x6362;&#x6253;&#x5F00;&#x3002;</p>
+<h4 id="&#x4F7F;&#x7528;&#x6D41;&#x7A0B;">&#x4F7F;&#x7528;&#x6D41;&#x7A0B;</h4>
+<ol>
+<li>&#x5BFC;&#x5165; <code>csv</code> &#x6A21;&#x5757;<pre><code class="lang-python"> <span class="token keyword">import</span> csv
+</code></pre>
+</li>
+<li>&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x5199;&#x5165;&#x5BF9;&#x8C61;<pre><code class="lang-python"> f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">&apos;10-test.csv&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;w&apos;</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">&apos;utf-8&apos;</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li>&#x521B;&#x5EFA; csv &#x5199;&#x5165;&#x5BF9;&#x8C61;<pre><code class="lang-python"> csv_writer <span class="token operator">=</span> csv<span class="token punctuation">.</span>writer<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li>&#x5199;&#x5165; json &#x6570;&#x636E;&#x7684; key &#x4F5C;&#x4E3A;&#x6807;&#x9898;<pre><code class="lang-python"> csv_writer<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span>results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li>&#x5FAA;&#x73AF;&#x5199;&#x5165;&#x6570;&#x636E;<pre><code class="lang-python"> <span class="token keyword">for</span> result <span class="token keyword">in</span> results<span class="token punctuation">:</span>
+   csv_writer<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span>result<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li>&#x4F7F;&#x7528;office &#x5BFC;&#x5165; csv &#x6570;&#x636E;&#x8F6C;&#x6362;&#x6210; excel &#x6570;&#x636E;</li>
+</ol>
+<h4 id="&#x5B9E;&#x73B0;&#x4EE3;&#x7801;">&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</h4>
+<pre><code class="lang-python"><span class="token keyword">import</span> csv
+<span class="token keyword">import</span> json
+results <span class="token operator">=</span> <span class="token boolean">None</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">&apos;09-data.json&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;r&apos;</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">&apos;utf-8&apos;</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    results <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+
+<span class="token comment"># &#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x5199;&#x5165;&#x5BF9;&#x8C61;</span>
+f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">&apos;10-test.csv&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;w&apos;</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">&apos;utf-8&apos;</span><span class="token punctuation">)</span>
+<span class="token comment"># &#x901A;&#x8FC7;&#x6587;&#x4EF6;&#x5BF9;&#x8C61;&#x521B;&#x5EFA; csv &#x5199;&#x5165;&#x5BF9;&#x8C61;</span>
+csv_writer <span class="token operator">=</span> csv<span class="token punctuation">.</span>writer<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+<span class="token comment"># &#x628A;&#x6570;&#x636E;&#x5199;&#x5165;&#x5230; csv &#x6587;&#x4EF6;&#x4E2D;</span>
+<span class="token comment"># &#x5199;&#x5165;&#x6807;&#x9898;</span>
+csv_writer<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span>results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> result <span class="token keyword">in</span> results<span class="token punctuation">:</span>
+    csv_writer<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span>result<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</div></div></div></sec>
+<sec data-title="&#x603B;&#x7ED3;" data-id="sectionend" data-collapse="true"><div class="panel panel-default"><div class="panel-heading"><h2>&#x603B;&#x7ED3;<a class="pull-right section atTitle btn btn-default" target="sectionend"><span class="fa fa-angle-up"></span></a></h2></div><div class="panel-collapse in" id="sectionend"><div class="panel-body">
+<ul>
+<li>csv &#x6587;&#x4EF6;&#x683C;&#x5F0F;<ul>
+<li>&#x9017;&#x53F7;&#x5206;&#x9694;&#x503C;&#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;</li>
+</ul>
+</li>
+<li>csv &#x57FA;&#x672C;&#x4F7F;&#x7528;<ul>
+<li>&#x521B;&#x5EFA;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x5BF9;&#x8C61;</li>
+<li>&#x521B;&#x5EFA;csv&#x5199;&#x5165;&#x5BF9;&#x8C61;</li>
+<li>&#x5199;&#x5165;json&#x6570;&#x636E;&#x7684;key</li>
+<li>&#x5199;&#x5165;json&#x6570;&#x636E;&#x5185;&#x5BB9;</li>
+</ul>
+</li>
+</ul>
+</div></div></div></sec></body></html>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../数据提取/bs4数据提取.html" class="navigation navigation-prev " aria-label="Previous page: beautifulsoup 数据提取"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../高级技巧/高级技巧.html" class="navigation navigation-next " aria-label="Next page: 高级技巧"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sectionx/sectionx.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ace/ace/ace.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ace/ace.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"expandable-chapters-small":{},"fontsettings":{"theme":"white","family":"sans","size":2},"prism":{"css":["prismjs/themes/prism-solarizedlight.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"],"sectionx":{"tag":"b"},"include-codeblock":{"template":"ace","unindent":true,"theme":"monokai"}},"splitter":{},"mermaid":{},"sectionx":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"ace":{},"emphasize":{},"toggle-chapters":{},"codeblock-filename":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book 爬虫课程 -->
+</html>

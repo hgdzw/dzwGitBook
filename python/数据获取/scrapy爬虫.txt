@@ -1,0 +1,40 @@
+首先明确要爬取得网站分析完整结构 先要获得的数据
+
+
+电脑里同时有python2和python3
+python2 -m scrapy startproject xxx
+python3 -m scrapy startproject xxx
+
+
+scrapy startproject mySpider 创建一个项目 
+	一 打开items文件 定义结构化类型字段 也就是要爬去的那些数据
+	
+	二 scrapy genspider baidu "baidu.com"		创建爬虫 文件名 和要爬去的网站
+		文件中  name 是爬虫名字
+				start_urls = [  ]		爬取的url列表  爬虫开始是从这里取数据
+				parse（） 必须要有的一个函数 解析返回（response） 主要解析网页数据 提取结构化生成item
+			
+			yield  当成一个生成器用 在这个爬虫中  主要返回两种 一种是item数据  还有一种就是请求  scrapy.Request(url,callback = 回调函数)
+			
+执行爬虫 scrapy crawl baidu（这是爬虫名字）
+
+
+rule 规则中 如果不指定callback函数的话 而你匹配的是地址 下一条规则 也可以匹配这个返回的页面中的地址			？？？
+
+
+
+如果是继承crawlspider 类的   
+scrapy genspider -t crawl tencent tencent.com
+要先导入
+#引入 crawlspider父类 和rule 规则类
+from scrapy.spider import CrawlSpider,Rule
+#这是链接匹配类 用来在页面中找符合规则的链接	
+from scrapy.linkextractors import LinkExtractor
+	
+	linkex = linkextractor(allow=("正则表达式"))
+	然后Rules = [		
+		Rule（linkex，callback=‘自己写的函数’，follow= 是否跟进）
+	]
+	
+启动爬虫 从start——urls中拿到链接地址发出请求 ，返回的response中用rule规则找出其中符合正则规则的链接列表发出请求 交给callback函数处理
+	callback处理数据 看是不是要把数据交给管道文件 管道文件下载 或是进行别的操作

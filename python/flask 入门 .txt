@@ -1,0 +1,242 @@
+
+Flask是一个Python编写的Web 微框架，让我们可以使用Python语言快速实现一个网站或Web服务。本文参考自Flask官方文档，大部分代码引用自官方文档。
+
+flask 是轻量级的   可以通过第三方库来安装其他的 	 flask—什么什么  	来安装
+
+requirements 文件 在虚拟环境中的依赖包  更新  就是把python已经安装的 库 打包
+	pip freeze >requirements.txt
+
+	安装的时候 pip install -r requirements.txt		按照文件 查找遍历
+首先 电脑上面有python
+
+	安装 virtualenv虚拟环境
+		pip install virtualenv
+	使用虚拟环境创建目录
+		virtualenv venv
+	这是一个单独的虚拟环境  然后 用
+		venv\Scripts\activate
+		进入 命令前面带《vnev》	的 虚拟环境
+
+		如果是linux 则用
+		source venv/bin/activate
+		进入 命令前面带《vnev》	的 虚拟环境
+		deactivate  退出虚拟环境
+
+
+	pip install flask  在虚拟环境里面安装flask
+
+
+	在一个文件 输入
+	from flask import Flask
+
+	app = Flask(__name__)
+
+
+	@app.route('/')
+	def hello_world():
+		return 'Hello Flask!'
+
+
+	if __name__ == '__main__':
+		app.run()
+
+	运行就能看到效果
+
+
+
+
+jinja2 模板引擎
+
+	只需要使用render_template函数并传入模板文件名和参数名即可。   项目下面有一个template 文件夹  这是下面就是模板
+	from flask  importr render_template
+
+	render_template('index.html',key= value)
+	在jinja2中，存在三种语法：
+
+		控制结构 {% %}
+		变量取值 {{ }}
+		注释 {# #}
+
+	变量代码块
+	{{  }}
+	传入的是list  或者字典  可以用
+	list.2或者 list[2]  或者 dict.key
+
+
+	控制代码块
+	{%   %}
+	{% for i in str %}
+	{% endfor %}
+
+	过滤器
+	{{  |  }}
+
+	{{ url | upper}}	大写变小写
+
+	falsh 消息闪现
+		需要导入falsh	要多内容加密  secret_key
+		app.secret_key='dasdasd'
+
+		可以让程序中的消息 直接闪现到 html 页面中  页面中用循环遍历的方法遍历消息
+		{{ for message in get_flashed_messages()}}
+			{{ message}}
+		{%  endfor %}
+		代码中  判断之后 flash('参数不完整')  就传过去了
+
+
+
+	实现一个简单的登录逻辑处理
+		1.路由需要有get post  两种请求方式
+		2.获取请求的方式
+		3.如果所有的判断都没有问题 返回success
+
+
+	WTForms  标准字段和验证函数
+
+			https://blog.csdn.net/wuqing942274053/article/details/72510920
+	WTF  实现表单的显示		pip install flask-WTF
+
+						导入  from flask_wtf import flaskform
+							from wtforms import Form, BooleanField, TextField,PasswordField,validators
+
+
+
+		html 只是取数据 到我们定义好的form 中 取数据
+
+		我们的代码里面 自己定义一个表单类  继承flaskform 父类  例如
+			class registerform（flaskform）：
+				#定义一个字段类型 当用的时候 要从wtfforms 里面导入  例如
+				#from wtforms import Form, BooleanField, TextField,PasswordField,validators
+				username = StringField('用户名',)
+
+	wtf  表单的逻辑验证 	from wtforms.validators import EqualTo,DataRequired
+
+			验证 是否输入 和比较
+			class registerform（flaskform）：
+				username = StringField('用户名',validators = [DataRequired()])
+
+		对类进行实例之后 一句话验证
+			form = registerform（）
+			if form.validate_on_submit():
+				print(username)
+
+
+
+获取前端form数据有两种方式
+					1. request.form.get('user')   字段名称
+					2. form.user.data	user字段名称
+
+
+ORM技术：Object-Relational Mapping，把关系数据库的表结构映射到对象上
+
+
+	操作数据库  通过flask 的  sqlalchemy 来操作 数据库		pip insatll flask-sqlalchemy	pip install pymysql
+				常用的SQLalchemy 字段类型  https://blog.csdn.net/weixin_41896508/article/details/80772238
+
+		from flask import Flask
+		from flask_sqlalchemy import SQLAlchemy
+
+		app = Flask(__name__)
+		# url的格式为：数据库的协议：//用户名：密码@ip地址：端口号（默认可以不写）/数据库名
+		app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:mysql@localhost/first_flask"
+		# 动态追踪数据库的修改. 性能不好. 且未来版本中会移除. 目前只是为了解决控制台的提示才写的
+		app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+		# 创建数据库的操作对象
+		db = SQLAlchemy(app)
+
+		class Rule(db.Model):
+			#定义表名
+			__tablename__ = 'roles'
+			#定义字段
+			#int 类型 主键
+			id = db.Column(db.Integer,primary_key = True)
+			name =db.Column(db.String(16),unique =True)
+		class User(db.Model):
+
+			__tablename__ = 'users'
+
+			id = db.Column(db.Integer,primary_key = True)
+			name = db.Column(db.String(16),unique =True)
+			#外键
+			role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
+
+		@app.route('/')
+		def index():
+
+
+
+			return 'hello word'
+
+
+		if __name__ == '__main__':
+			#删除表
+			db.drop_all()
+
+			#创建表
+			db.create_all()
+			#数据库的增删改 通过session
+			role =Rule(name = 'admin')
+			#添加实例到session
+			db.session.add(role)
+			ro2 = Rule()
+			ro2.name = 'user'
+			db.session.add(ro2)
+			#提交
+			db.session.commit()
+
+			usr1 = User(name = 'xiaoming',password = '123456',age = 18,role_id = role.id)
+			usr2 = User(name = 'xiaohuang',password = '123456',age = 12,role_id = ro2.id)
+			usr3 = User(name='xiaoli', password='125456', age=13, role_id=ro2.id)
+
+			db.session.add_all([usr1,usr2,usr3])
+			db.session.commit()
+			app.run(debug=True)
+
+	ps：关于db.create_all()  在linux 上面怎么用不上
+		运行前要先创建好数据库 然后才能映射上去 才能用
+
+
+	ps: 关于关系查询
+		仅仅是为了方便查询 不在数据表中出现  一般应该是通过外键相连接的
+		一对多的关系  在 一的模型中定义relationship   backref是反向引用 在user 中不用写  但是已经有这个属性了
+
+			users 是role 要用的属性    role 是user 要用的属性
+		class role():
+			users = db.relationship('user',backref='role')
+		class user():
+		def __repr__(self):
+			通过这个方法可以打印可读字符串
+
+
+sqlalchemy 对 数据库的增删改
+		class User()
+		class Book()
+		#增加
+		user = User(name='')
+		db.session.add(user)
+		db.commit()
+		#删除
+		user = User.query.get(id)
+		db.session.delete(user)
+		db.commit()
+
+		查询所有用户数据
+		User.query.all()
+		2. 查询有多少个用户
+		User.query.count()
+		3. 查询第1个用户
+		User.query.first()
+
+		4. 查询id为4的用户[3种方式]
+		User.query.get(4)
+		User.query.filter_by(id=4).first()　　　　
+		User.query.filter(User.id==4).first()
+		
+		
+		
+	
+	
+	
+	
+	
+	
