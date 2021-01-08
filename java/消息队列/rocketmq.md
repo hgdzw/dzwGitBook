@@ -1,7 +1,7 @@
 * Rocketmq 由哪些角色组成，每个角色作用和特点是什么？
 * RocketMQ中的Topic和JMS的queue有什么区别？
 * 消息的顺序消费 重复消费和消息堆积/丢失的问题?
-* 
+
 
 ## 1. RocketMq的消息模型
 
