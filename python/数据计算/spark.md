@@ -48,10 +48,16 @@
     # 读取csv 也是一样
     df = spark.read.csv("F://prod-zhongda+0+0024526281.csv")
 
+    # 读取 parquet
+    df = spark.read.parquet("F://prod-zhongda+0+0024526281.parquet")
+
 ```
    
    #### 2.2 数据过滤
    ```py
+    # select 过滤字段  alias 取别名
+    df = df.select(df.data.alias('data'),df.update_time.alias('update_time'))
+
     # filter 过滤
     # 第一种 直接在 "" 里面写表达式 
     df.filter(" xid > 33333333 ")
@@ -61,11 +67,10 @@
     # where 过滤
     df.where(df.xid > 3333)    
 
-
     # udf 过滤 
     from pyspark.sql.functions import udf
     from pyspark.sql.types import *
-    # 可以直接定义一个自定义函数 并注册进 sql 可以用的
+    # 可以直接定义一个自定义函数 并注册进 sql 可以用的 后面参数是返回值类型
     test_method = udf(lambda x:(x+1),LongType())
     spark.udf.register("test_method", test_method)    
     #也可以在注册的时候 直接定义一个函数
@@ -80,6 +85,10 @@
 
    # 将 df转成 一个list  
     dfList = df.collect()
+
+   # Coalesce 重分区  coalesce 变少(如果传入的参数比限制分区数多 也不会变多 因为 shuffle 默认为false) repartition 变多(因为 shuffle 为true)
+    df.coalesce(1)  //变少
+    df.repartition()    //变多
 
 ```
 
@@ -110,6 +119,35 @@
 
 
 ```
+   #### 2.5 数据写出
+   ```py
+       # 写入oss
+       pathout = 'oss://yeshan01/test.csv'
+       df.write.csv(pathout)
+        
+       #写入本地文件
+       df.write.json("F://data.json")
+
+```
+
+
+
+
+   #### 2.6 数据展示
+   ```py
+    //总条数
+    df.count()
+    //列名
+    df.columns
+    //转换成pandas 数据结构
+    df.toPandas()       
+    //查看所有
+    df.show()
+    //查看第一条
+    df.frist()
+
+```
+
 ### 三、对mysql的增查
    #### 3.1 连接mysql
    首先要下载驱动  参考这个  https://blog.csdn.net/weixin_41831619/article/details/79914307  

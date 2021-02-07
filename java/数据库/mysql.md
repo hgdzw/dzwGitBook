@@ -92,6 +92,18 @@ mysql 架构:
    是一个二进制文件 记录了所有的更改 主要用作记录时间点 对sql 进行了更新 删除操作主要用于
    1. 主从同步 主服务器将这个发送到从服务器 
    2. 从服务器执行 同步  还可以用于还原
+   
+   相关命令:
+   ```sql
+    -- 查看binlog 的路径
+    show variables like '%log_bin%'; 
+    -- 查看当前binlog 的状态 
+    show master status;
+    -- 将binlog文件导出为sql文件查看
+    -- mysqlbinlog.exe -uroot F:\binlog.000050 >f:\binlog.sql  
+
+``` 
+   
 #### 5.3、undo log 存储引擎的回滚日志  
    大白话: 在数据的头文件中 存储修改之前的数据 和版本号 这样出现错误了 可以直接回滚   
     在事务没有提交的时候 每执行一个sql 就生成一个undo log 放在行记录的DATA_ROLL_PTR 中 如果是删除的 直接放在行记录头信息里 标记为删除
