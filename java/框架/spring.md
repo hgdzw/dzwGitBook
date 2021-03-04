@@ -147,6 +147,9 @@ public class A{
    不生效 事务的本质是代理 是调用的时候对这个类的方法 进行 aop 增强 如果是同类调用 没法 用代理  所以事务不生效
    原理大概就是 调用这个方法前 开启mysql 事务 start TRANSACTION 之后 commit 或者 roback   
 
+ #### Q: Autowired注解 和 Resource 注解的区别？
+ Autowired注解 默认是根据 类型来查找bean, Resource 注解 默认是根据名字来查找bean  
+ 对于只有一个实现的来说这两个没啥区别,对于有多个实现的 如果是指定了某一个实现的名称 那Autowired注解 还是会查找所有的， Resource 只会返回这个名字的一个bean
 
 
 
