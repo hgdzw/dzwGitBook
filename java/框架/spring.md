@@ -130,6 +130,7 @@ public class A{
     }
 }
 ```
+
 #### Q: beanFactory 和 factoryBean 的区别？
    首先明白beanFactory 是一个接口 在上面的源码中 他是ioc容器的一个工厂 getBean() 的方法都注册到这个上面的  
    factoryBean 也是一个接口 主要是让我们可以自定义bean 的创建过程(你可以new一个其他的类然后返回),只要实现这个借口，可以自定义bean的创建过程
@@ -146,6 +147,19 @@ public class A{
  #### Q: spring 中 A(没有事务)调用 B(有事务) 同类中 B 的事务生效吗 如果不生效 为什么？
    不生效 事务的本质是代理 是调用的时候对这个类的方法 进行 aop 增强 如果是同类调用 没法 用代理  所以事务不生效
    原理大概就是 调用这个方法前 开启mysql 事务 start TRANSACTION 之后 commit 或者 roback   
+   
+ #### Q: 事务的传播特性？
+   spring 编程中肯定是用到事务, 假如方法A(有事务),调用方法B(有事务), 这个时候 try 住 B B 事务回滚 A 也会回滚 ,因为默认的传播特性是第一个 , 总共是有以下传播特性的
+   * **PROPAGATION_REQUIRED：默认事务类型，如果没有，就新建一个事务；如果有，就加入当前事务。适合绝大多数情况。**
+   * PROPAGATION_REQUIRES_NEW：如果没有，就新建一个事务；如果有，就将当前事务挂起。
+   * PROPAGATION_NESTED：如果没有，就新建一个事务；如果有，就在当前事务中嵌套其他事务。
+   * PROPAGATION_SUPPORTS：如果没有，就以非事务方式执行；如果有，就使用当前事务。
+   * PROPAGATION_NOT_SUPPORTED：如果没有，就以非事务方式执行；如果有，就将当前事务挂起。即无论如何不支持事务。
+   * PROPAGATION_NEVER：如果没有，就以非事务方式执行；如果有，就抛出异常。
+   * PROPAGATION_MANDATORY：如果没有，就抛出异常；如果有，就使用当前事务。
+   
+   我们可以通过在 @Transactional(rollbackFor=Exception.class,propagation= Propagation.NESTED) 里面指定传播特性来指定
+
 
  #### Q: Autowired注解 和 Resource 注解的区别？
  Autowired注解 默认是根据 类型来查找bean, Resource 注解 默认是根据名字来查找bean  

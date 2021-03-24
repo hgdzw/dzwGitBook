@@ -1,8 +1,10 @@
 
 大数据前驱知识  
-   * hadoop: 一个大数据计算框架,使用hdfs作为存储,多个廉价的集群组成集群
+   * hadoop: 一个大数据计算框架,使用hdfs作为存储,多个廉价的机器组成集群
    * hive：丰富的SQL查询方式来分析存储在Hadoop分布式文件系统中的数据：可以将结构化的数据文件映射为一张数据库表，并提供完整的SQL查询功能；
-   * mapreduce: 一个计算任务被拆分为多个部分,分配到集群下的计算机,多台计算机并行计算并将结果汇总.
+   * mapreduce: 一个计算任务被拆分为多个部分,分配到集群下的计算机,多台计算机并行计算并将结果汇总. 分为mapper过程(分解) 和reduce过程(重组)
+   * shuffle： shuffle 是 mapreduce 的核心，
+   ![image](../image/MapReduce过程.png)
 
 ### 一、背景介绍
    spark 是和hadoop 一样的分布式数据计算框架,但是hadoop是基于HDFS 文件存储的,而 spark 是基于内存的 所以速度上来说 是要比hadoop要快的.其根本在于将**数据转成表**  
@@ -23,6 +25,9 @@
         - 使用Hive时，使用HiveContext
    * DataFrame: 基本的表,以二维表格的形式存储数据,还有schema(数据的结构信息),性能比RDD高 并且有存储结构信息
    * DateSet： 比DateFrame更细致 能知道每个字段的类型
+   * shuffle read:
+   * shuffle writer:
+
 
    #### 1.2 环境安装
    * windows 操作系统
