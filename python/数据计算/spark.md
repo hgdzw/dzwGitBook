@@ -3,7 +3,7 @@
    * hadoop: 一个大数据计算框架,使用hdfs作为存储,多个廉价的机器组成集群
    * hive：丰富的SQL查询方式来分析存储在Hadoop分布式文件系统中的数据：可以将结构化的数据文件映射为一张数据库表，并提供完整的SQL查询功能；
    * mapreduce: 一个计算任务被拆分为多个部分,分配到集群下的计算机,多台计算机并行计算并将结果汇总. 分为mapper过程(分解) 和reduce过程(重组)
-   * shuffle： shuffle 是 mapreduce 的核心，
+   * shuffle： shuffle 是 mapreduce 的核心， 在从map 到reduce的过程中 将输入到reduce的结果进行排序的过程叫shuffle
    ![image](../image/MapReduce过程.png)
 
 ### 一、背景介绍

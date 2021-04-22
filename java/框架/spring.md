@@ -13,7 +13,8 @@
 
 ### 二、spring生命周期
    ![image](../image/spring对象的生命周期.png)
-  首先会设置beanFactory 将所有的bean 放在这个里面, 容器说到底就是一个map  name -> bean  然后设置类加载器 看bean是否实现了一些类 然后执行这些方法 然后将类进行初始化  
+  首先会设置beanFactory 将所有的bean 放在这个里面, 容器说到底就是一个map  name -> bean  然后设置类加载器 看bean是否实现了一些类 然后执行这些方法 然后将类进行初始化 
+   
   #### 2.1首先看懂spring的生命周期有什么用? 
   从上面的生命周期我们可以很清楚的看清,我们所注入到的bean是在什么时候加载的,如果我们要对加载的bean在他加载之前进行操作 应该怎么做？
   
@@ -38,10 +39,20 @@ Q: 首先的疑问是 bean 实现了 一些接口 在调用这些接口的时候
 
 
 ### 四、AOP 面向切面编程: 使用动态代理对方法进行增强
-   * aop是在什么时候实现的？ 
-   * aop有没有默认的代理 cglib还是jdk动态代理
-   当对一系列(有特征的)方法进行统一处理,spring 的aop 是基于动态代理的 如果是对有接口的 是使用JDK Proxy进行代理的
+
+   #### 4.1 AOP 和 AspactJ 有什么区别
+   可以说是AspactJ是AOP 的完全版本,   
+   AOP 是基于Spring 的IOC的, 纯spring 代码 和AspactJ没什么关系    当对一系列(有特征的)方法进行统一处理,spring 的aop 是基于动态代理的 如果是对有接口的 是使用JDK Proxy进行代理的
    如果是没有实现接口的 那么就无法使用JDK Proxy进行代理了 这个时候就使用 cglib生成一个被代理的子类进行代理
+   
+   
+   #### 4.2 aop术语
+   Pointcut： 切点  解析式里面可以用 类似于正则表达式的匹配到很多  这些点形成一个切面
+   
+   
+
+
+   
 
 
 
@@ -133,7 +144,7 @@ public class A{
 
 #### Q: beanFactory 和 factoryBean 的区别？
    首先明白beanFactory 是一个接口 在上面的源码中 他是ioc容器的一个工厂 getBean() 的方法都注册到这个上面的  
-   factoryBean 也是一个接口 主要是让我们可以自定义bean 的创建过程(你可以new一个其他的类然后返回),只要实现这个借口，可以自定义bean的创建过程
+   factoryBean 也是一个接口,主要是让我们可以自定义bean 的创建过程(你可以new一个其他的类然后返回),只要实现这个借口，可以自定义bean的创建过程，一般用于bean的创建比较复杂的场景，比如数据库连接池的创建
 
 #### Q: BeanFactoryPostProcessor 和 BeanPostProcessor 的区别？
    BeanFactoryPostProcessor 是先于 BeanPostProcessor 的,BeanFactoryPostProcessor 是在所有bean 加载注册之后进行的 这个时候就可以对这些bean进行修改  

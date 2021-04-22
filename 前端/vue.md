@@ -8,6 +8,8 @@
    ![image](image/vue项目结构.png)  
    * main.js: 入口文件,主要是引入vue框架，根组件及路由设置，并且定义vue实例。
    * route: 这个下面的index.js routes定义了路径为'/'的路由
+   * package.json： 定义项目的各种模块, 相当于 pom文件
+   * node_moudules:  这里面是通过 package.json 这个里面的依赖将这些下载下来放在这里, 然后项目里面就可以引用了
    * App.vue: 一个主vue的界面 包含三个主要区域
         - template 
           其中模板只能包含一个父节点，<router-view/>为<router-view></router-view>的简写，是子路由视图，后面的路由页面都显示在此处。
