@@ -20,19 +20,67 @@
 ### 2.Redis的数据结构
    首先明确 redis 的数据存储都是 key-value 存储的  这下面说的数据结构都是value 的数据结构。
    #### 2.1 String
-   
    这个不用多说 就是普通的key -value 存储的.
+   ```text
+   // 设置值
+   set key value 
+   // 获取值
+   get key
+   ```
+   
+   #### 2.1.1 bitMap 位图
+   在字符串上面延伸出来的,实际存储的就是byte数组  但是占用空间小 只存0或1，我们时常用 偏移值来代表一个用户的标识 然后用key 来标识一个业务标识 这样是value的横向扩展
+ 
+   ```text
+    //设置值
+    setBit key offset value
+    //获取值
+    getBit key offset
+   ```
    
    
    #### 2.2 hash 
-   这个存储可以说是 里面是 map 的类型 用于存储一个对象 然后拿出来改一改
+   这个存储可以说是 里面是 map 的类型 用于存储一个对象 然后拿出来改一改 其实就是一个 key 就是一个对象名 然后 key value  就是属性 和对应的值
+   ```text
+   //设置值
+   hset key key1 value1
+   //获取值
+   hget key key1
+   //获取所有的键值
+   hgetall key
+   ```
+   
    #### 2.3 list
-   存储的就是一个list 用于文章的评论  或者粉丝的列表
+   存储的就是一个list 用于文章的评论,或者粉丝的列表, 列表是双向列表 可以从左或者从有取或者放  lpush lpop rpush rpop
+   ```text
+   //左放进去
+   lpush key value
+   // 列表长度
+   llen key
+   //获取列表中的值
+   lrange key start stop
+   //从右侧移除一个 
+   rpop key 
+   ```
+   
    #### 2.4 set
    存储的是一个 不重复的list  
+   ```text
+   //添加元素
+   sadd key value1 value2
+   //获取元素
+   smembers key
+   ```
+
    #### 2.5 sortset(zset)
-   是一个顺序的不重复的列表 
-   
+   是一个顺序的不重复的列表  通过 score 来排序的
+   ```text
+   //设置值
+   zadd key score value
+   //获取值
+   zrange key start end WITHSCORES
+   ```
+
 ### 3. Redis 淘汰机制
    在往内存中设置值的时候如果设置了过期时间的话 当过期时间到了 要等待再次访问到才会给删除 如果都没有设置过期时间 再放进新的数据在进来内存的淘汰机制
    * noeviction：当内存不足以容纳新写入数据时，新写入操作会报错，这个一般没人用吧
