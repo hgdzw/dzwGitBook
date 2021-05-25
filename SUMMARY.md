@@ -12,8 +12,8 @@
 * [分布式](java/spring%20cloud.md)
   * [mysql](java/nacos.md)
 --- 
-* [数据库](java/数据库/数据库remark.md)
-  * [mysql](java/数据库/mysql.md)
+* [数据库](数据库/数据库remark.md)
+  * [mysql](数据库/mysql.md)
 ---
 * [中间件](java/消息队列.md)
   * [rocketmq](java/消息队列/rocketmq.md)

@@ -60,7 +60,7 @@
    
    
    #### 3.2 es 写入的详细流程
-   ![image](../image/Es写入流程.png)
+   ![image](image/Es写入流程.png)
    1. 当
    
    #### 3.3 es读取的流程

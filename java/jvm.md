@@ -118,7 +118,17 @@
    不能再foreach中去除  可以用迭代器 获取fori
 
 
-
+## 内存管理工具
+   ### 在windows中 使用 jconsle
+   在jdk 的目录中 直接打开 然后选中运行的java 就可以了 
+   
+   ### 在命令行中 
+   命令生成一个堆内存快照放到一个二进制文件中去  
+   jmap -dump:live,format=b,file=dump.hprof PID
+   
+   按照各种对象占用内存空间的大小降序排列，吧占用内存最多的对象放在最上面  
+   jmap -histo PID  
+     
 
 
 
