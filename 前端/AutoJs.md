@@ -26,6 +26,8 @@
 ```
 
    #### 2.1 寻找坐标
+   手机可以在  开发者选项-> 开启"指针位置" 可以直接获取指针位置了
+   
    ```text
    //根据文字找第一个坐标
    var res = className("android.widget.TextView").text("京东活动").findOne();
