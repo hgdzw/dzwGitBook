@@ -8,7 +8,7 @@
    大概的就是 SqlSessionFactoryBuilder -> sqlSessionFactory -> SQLSession -> mapperProxy
    * mapperProxy：每一个mapper 对象其实是一个接口，没有具体的实现 这个就是通过动态代理 将每一个mapper 动态生成对应的类,
    * SQLSession： 可以通过这个获取mapperProxy,每一个方法想要去执行sql 都要创建这一个类 用他来执行sql(其实最终是通过Executor来执行的) 生成这个看DefaultSqlSessionFactory#openSessionFromDataSource
-   * sqlSessionFactory：这个是生成 sqlSession 的工厂, 通过Confuguration 获取相关的配置, 这个文件是SqlSessionFactoryBuilder 生成的
+   * sqlSessionFactory：这个是生成 sqlSession 的工厂, 通过 Confuguration 获取相关的配置, 这个文件是 SqlSessionFactoryBuilder 生成的
    * SqlSessionFactoryBuilder：解析配置文件 生成一个sqlSessionFactory
 
    #### 2.2 mybatis 的工作流程
@@ -16,9 +16,15 @@
      如果只是引入了mybatis 加载 xml 文件 然后配置 扫描路径 会动态根据路径中的mapper 动态生成代理  
    如果是引入了spring boot 那就是通过注解将要扫描的mapper 放在里面 之后就是生成动态代理 运行的时候就是通过 是sqlSession中executor来执行
 
-### 3. 问题
 
-#### Q:
+   #### 2.3 加载步骤
+   https://blog.csdn.net/newbie0107/article/details/102763685
+   1. 读取XML配置文件和注解中的配置信息，创建配置对象，并完成各个模块的初始化的工作  SqlSessionFactoryBuilder.build  生成一个  sqlSessionFactory   
+        其实这个时候我们所有的mapper 文件已经全部解析完毕了 放在 Confuguration 的 mapperRegistry 中
+   2. 我们在使用的时候 是用 sqlSessionFactory.openSession(true) 获取一个 SqlSession， 然后SqlSession.getmapper() 这里面会从 Confuguration的mapperRegistry
+       中通过动态代理的形式生成一个出来
+   3. 
+
 
 #### Q:mybatis 的延迟加载?
    什么是延迟加载,是不需要的数据不一次查出来 先查出来一部分 然后在需要的时候自动去查询 

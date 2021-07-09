@@ -32,7 +32,7 @@ Q: 首先的疑问是 bean 实现了 一些接口 在调用这些接口的时候
    
    #### 3.2 流程
    1. 首先就是spring的启动看是什么方式启动的 一般是AbstractApplicationContext中的refresh 方法,然后就是加载所有要放进ioc 的类 将他们放进DefaultListableBeanFactory 的beanDefinitionMap中,
-   2. 这个时候已经加载和注册完毕了 看那个接口实现了BeanFactoryPostProcessor 执行方法
+   2. 这个时候已经加载和注册完毕了 看那个接口实现了 BeanFactoryPostProcessor 执行方法
    3. registerBeanPostProcessors()看那个map中有哪些类继承了 BeanPostProcess 将他们放入 beanPostProcessors 列表中
    4. 创建bean的实例 然后看有没有前置方法执行 然后 initializeBeanBean() 这里应该是aop注入的时机  然后执行后置方法
    
